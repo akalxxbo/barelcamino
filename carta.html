@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="theme-color" content="#3B2A1D"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <title>CARTA Y MENÚ | Bar El Camino Rte. (Requena)</title>
+  <meta name="description" content="Carta completa de Bar El Camino en Requena: Desayunos, bocadillos de almuerzo, tapas de barra, carnes a la brasa, pescados y combos para compartir."/>
+  
+  <!-- Google Fonts: EB Garamond, Playfair Display, Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: "#EAE0CC",
+            "surface-dim": "#D2C2A0",
+            "surface-bright": "#F4EFE6",
+            "surface-container": "#DDCEAE",
+            "on-surface": "#3B2A1A",
+            "on-surface-variant": "#5C4A38",
+            primary: "#7A2020",
+            "primary-dark": "#5a1515",
+            outline: "#A9824F",
+            "outline-variant": "#C9B896"
+          },
+          fontFamily: {
+            display: ["Playfair Display", "serif"],
+            body: ["EB Garamond", "serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <script>
+    if (window.self !== window.top || window.location.search.includes('modal=1')) {
+      document.documentElement.classList.add('in-modal');
+    }
+  </script>
+  <style>
+    /* Modo Minimalista dentro del Modal (Oculta cabecera y dock inferior de la carta) */
+    html.in-modal header {
+      display: none !important;
+    }
+    html.in-modal aside {
+      display: none !important;
+    }
+    html.in-modal nav {
+      top: 0 !important;
+    }
+    html.in-modal body {
+      padding-bottom: 2rem !important;
+    }
+    html.in-modal #btn-back-to-top {
+      bottom: 1.5rem !important;
+    }
+
+    body {
+      background-color: #EAE0CC;
+      background-image: radial-gradient(#C9B896 0.75px, transparent 0.75px), radial-gradient(#C9B896 0.75px, #EAE0CC 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+      color: #3B2A1A;
+      font-family: 'EB Garamond', serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Ocultar barra de scroll nativa para carrusel de categorías */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Marco estilo carta física de mesón */
+    .menu-card-border {
+      border: 1.5px solid #A9824F;
+      box-shadow: 0 4px 20px -2px rgba(59, 42, 26, 0.15);
+      position: relative;
+    }
+
+    /* Línea de puntos entre plato y precio */
+    .dish-dotted-leader {
+      flex: 1 1 auto;
+      min-width: 8px;
+      border-bottom: 2px dotted rgba(169, 130, 79, 0.45);
+      margin: 0 6px 4px 6px;
+    }
+
+    /* Píldora de categoría activa */
+    .cat-pill.active {
+      background-color: #7A2020 !important;
+      color: #F4EFE6 !important;
+      border-color: #7A2020 !important;
+      box-shadow: 0 2px 8px rgba(122, 32, 32, 0.4);
+    }
+    .cat-pill {
+      touch-action: manipulation;
+    }
+
+    /* Precios y títulos en pantallas pequeñas */
+    .dish-item .whitespace-nowrap {
+      flex-shrink: 0;
+    }
+    .dish-item .font-semibold, .dish-item .font-bold {
+      line-height: 1.25;
+    }
+
+    /* Evitar auto-zoom forzado en Safari iOS */
+    #dish-search-input {
+      font-size: 16px !important;
+    }
+
+    /* Soporte Safe Area Notch / Barra inferior de iPhone */
+    .pb-safe {
+      padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0.5rem));
+    }
+    .bottom-bar-safe {
+      padding-bottom: max(0.6rem, env(safe-area-inset-bottom, 0.6rem));
+    }
+  </style>
+</head>
+<body class="selection:bg-primary selection:text-white pb-28 md:pb-12 text-base sm:text-lg">
+
+  <!-- ========================================== -->
+  <!-- CABECERA SUPERIOR: VOLVER + LOGO + CONTACTO -->
+  <!-- ========================================== -->
+  <header class="sticky top-0 z-40 bg-[#3B2A1D]/95 backdrop-blur-md border-b-2 border-[#A9824F]/60 text-[#F4EFE6] px-3 sm:px-6 py-2 shadow-md">
+    <div class="max-w-4xl mx-auto flex items-center justify-between gap-2">
+      
+      <!-- Botón Volver a la Landing -->
+      <a href="index.html" class="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#DDCEAE] hover:text-white transition-colors py-1.5 px-2.5 rounded hover:bg-[#4A3626] active:scale-95 border border-[#A9824F]/30" aria-label="Volver a la portada">
+        <span class="material-symbols-outlined text-lg sm:text-xl">arrow_back</span>
+        <span class="hidden xs:inline">Inicio</span>
+      </a>
+
+      <!-- Logotipo Oficial Bar El Camino (Transparente) -->
+      <a href="index.html" class="flex items-center justify-center py-0.5">
+        <img src="logo-el-camino.png" alt="Bar El Camino Rte." class="h-8 sm:h-10 w-auto object-contain filter brightness-110 drop-shadow-md" />
+      </a>
+
+      <!-- Acciones de cabecera: Compartir y WhatsApp -->
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <!-- Botón Compartir Carta en Móvil (Web Share API) -->
+        <button onclick="shareMenu()" class="p-1.5 sm:px-2.5 sm:py-1 rounded bg-[#4A3626] border border-[#A9824F]/50 text-[#DDCEAE] hover:text-white flex items-center gap-1 text-xs uppercase tracking-wider font-semibold active:scale-95 transition-all" title="Compartir carta con acompañantes">
+          <span class="material-symbols-outlined text-base">share</span>
+          <span class="hidden md:inline">Compartir</span>
+        </button>
+
+        <!-- Botón Rápido WhatsApp Mesa -->
+        <a href="https://wa.me/34666056955?text=Hola,%20estamos%20en%20el%20mes%C3%B3n%20y%20quisi%C3%A9ramos%20consultar%20sobre%20la%20carta%20o%20hacer%20un%20pedido." target="_blank" rel="noopener" class="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1 bg-[#2D6A4F] hover:bg-[#1E4A37] text-white text-xs uppercase tracking-wider font-bold rounded shadow transition-all active:scale-95 border border-[#2D6A4F]/60 min-h-[34px]">
+          <span class="material-symbols-outlined text-sm sm:text-base">chat</span>
+          <span class="hidden sm:inline">WhatsApp</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- BARRA PEGAJOSA DE CATEGORÍAS (MÓVIL FRIENDLY CON SNAP) -->
+  <!-- ========================================== -->
+  <nav class="sticky top-[49px] sm:top-[57px] z-30 bg-[#EAE0CC]/95 backdrop-blur-md border-b border-[#C9B896] py-2 px-2 sm:px-4 shadow-sm" aria-label="Categorías del menú">
+    <div id="category-pills" class="max-w-4xl mx-auto flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth py-0.5" style="-webkit-overflow-scrolling: touch;">
+      <button onclick="scrollToCat('desayunos')" data-target="desayunos" class="cat-pill active whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all bg-[#DDCEAE] text-[#3B2A1A] border border-[#A9824F]/50 flex items-center gap-1.5 shrink-0 active:scale-95">
+        <span class="material-symbols-outlined text-sm">coffee</span> Desayunos
+      </button>
+      <button onclick="scrollToCat('bocadillos')" data-target="bocadillos" class="cat-pill whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all bg-[#DDCEAE] text-[#3B2A1A] border border-[#A9824F]/50 flex items-center gap-1.5 shrink-0 active:scale-95">
+        <span class="material-symbols-outlined text-sm">bakery_dining</span> Bocadillos
+      </button>
+      <button onclick="scrollToCat('tapas')" data-target="tapas" class="cat-pill whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all bg-[#DDCEAE] text-[#3B2A1A] border border-[#A9824F]/50 flex items-center gap-1.5 shrink-0 active:scale-95">
+        <span class="material-symbols-outlined text-sm">tapas</span> Tapas
+      </button>
+      <button onclick="scrollToCat('brasas')" data-target="brasas" class="cat-pill whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all bg-[#DDCEAE] text-[#3B2A1A] border border-[#A9824F]/50 flex items-center gap-1.5 shrink-0 active:scale-95">
+        <span class="material-symbols-outlined text-sm">local_fire_department</span> Carnes a la Brasa
+      </button>
+      <button onclick="scrollToCat('pescados')" data-target="pescados" class="cat-pill whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all bg-[#DDCEAE] text-[#3B2A1A] border border-[#A9824F]/50 flex items-center gap-1.5 shrink-0 active:scale-95">
+        <span class="material-symbols-outlined text-sm">set_meal</span> Pescados
+      </button>
+      <button onclick="scrollToCat('combos')" data-target="combos" class="cat-pill whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase transition-all bg-[#DDCEAE] text-[#3B2A1A] border border-[#A9824F]/50 flex items-center gap-1.5 shrink-0 active:scale-95">
+        <span class="material-symbols-outlined text-sm">group</span> Combos Especiales
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========================================== -->
+  <!-- CONTENIDO PRINCIPAL DE LA CARTA -->
+  <!-- ========================================== -->
+  <main class="max-w-4xl mx-auto px-3 sm:px-6 pt-4 sm:pt-6 pb-8">
+
+    <!-- Tarjeta de Bienvenida con buscador en vivo -->
+    <div class="text-center mb-5 bg-[#F4EFE6] border-2 border-[#A9824F]/60 rounded-lg p-4 sm:p-6 shadow-md relative overflow-hidden">
+      <div class="text-[#7A2020] text-xs sm:text-sm uppercase tracking-[0.25em] font-display font-bold mb-1">
+        Mesón Histórico · Requena
+      </div>
+      <h1 class="font-display text-2xl sm:text-4xl text-[#3B2A1A] font-bold uppercase tracking-wide">
+        Carta de Comidas y Almuerzos
+      </h1>
+      <p class="font-body text-sm sm:text-base text-[#5C4A38] italic max-w-xl mx-auto mt-1">
+        Precios con IVA incluido. Cocina casera tradicional, brasas de sarmiento y productos de nuestra comarca.
+      </p>
+
+      <!-- Buscador en tiempo real de platos con botón de limpiar -->
+      <div class="mt-4 max-w-md mx-auto relative">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#A9824F] text-lg pointer-events-none">search</span>
+        <input 
+          id="dish-search-input" 
+          type="search" 
+          placeholder="Buscar plato o ingrediente (lomo, sepia, huevo...)" 
+          class="w-full pl-9 pr-9 py-2.5 text-xs sm:text-sm rounded-full bg-[#EAE0CC]/80 border border-[#A9824F]/60 focus:outline-none focus:ring-2 focus:ring-[#7A2020] text-[#3B2A1A] placeholder-[#7A6A50] font-sans"
+          oninput="handleSearch(this.value)"
+        />
+        <button id="clear-search-btn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-[#7A6A50] hover:text-[#7A2020] p-1" aria-label="Limpiar búsqueda">
+          <span class="material-symbols-outlined text-base">cancel</span>
+        </button>
+      </div>
+
+      <!-- Contador de resultados de búsqueda -->
+      <div id="search-counter" class="hidden text-xs font-semibold text-[#7A2020] mt-2 font-display uppercase tracking-wider"></div>
+    </div>
+
+    <!-- Mensaje cuando la búsqueda no produce resultados -->
+    <div id="no-results-msg" class="hidden text-center py-10 px-4 bg-[#F4EFE6] border-2 border-dashed border-[#A9824F]/60 rounded-lg my-6">
+      <span class="material-symbols-outlined text-4xl text-[#7A2020] mb-2">search_off</span>
+      <h3 class="font-display text-lg font-bold text-[#3B2A1A]">No se han encontrado platos</h3>
+      <p class="text-sm text-[#5C4A38] mt-1 mb-4" id="no-results-text">No hay platos que coincidan con la búsqueda.</p>
+      <button onclick="clearSearch()" class="px-5 py-2.5 bg-[#7A2020] text-white text-xs font-bold uppercase tracking-wider rounded shadow active:scale-95 border border-[#A9824F]/40">
+        Ver toda la carta
+      </button>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 1. SECCIÓN: DESAYUNOS Y TOSTADAS -->
+    <!-- ========================================== -->
+    <section id="desayunos" class="menu-section mb-8 scroll-mt-28">
+      <div class="bg-[#F4EFE6] menu-card-border rounded-lg p-4 sm:p-7">
+        
+        <!-- Encabezado con grabado rústico -->
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#A9824F]/40 mb-4">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#7A2020] text-xl sm:text-2xl">coffee</span>
+            <h2 class="font-display text-xl sm:text-2xl font-bold uppercase tracking-wider text-[#3B2A1A]">
+              Desayunos y Tostadas
+            </h2>
+          </div>
+          <span class="text-xs uppercase tracking-widest text-[#7A6A50] font-display font-bold hidden sm:inline">
+            Desde las 06:00 h
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5 dish-list">
+          
+          <!-- Croissant -->
+          <div class="dish-item flex items-baseline justify-between" data-search="croissant bolleria dulce">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Croissant</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">2,00 €</div>
+          </div>
+
+          <!-- Magdalena -->
+          <div class="dish-item flex items-baseline justify-between" data-search="magdalena bolleria dulce">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Magdalena</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">1,00 €</div>
+          </div>
+
+          <!-- Bizcocho -->
+          <div class="dish-item flex items-baseline justify-between" data-search="bizcocho casero bolleria">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Bizcocho Casero</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">2,00 €</div>
+          </div>
+
+          <!-- Tostada con Aceite -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tostada aceite oliva">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Tostada con Aceite de Oliva</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">1,50 €</div>
+          </div>
+
+          <!-- Tostada con Mermelada y Mantequilla -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tostada mermelada mantequilla dulce">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Tostada con Mermelada y Mantequilla</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">2,00 €</div>
+          </div>
+
+          <!-- Tostada de Tomate con Jamón -->
+          <div class="dish-item flex flex-col" data-search="tostada tomate jamon aceite">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Tostada de Tomate y Jamón</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">3,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Con jamón y aceite de oliva virgen</div>
+          </div>
+
+          <!-- Tostada de Aguacate -->
+          <div class="dish-item flex flex-col" data-search="tostada aguacate tomate rodajas queso fresco salmon">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Tostada de Aguacate y Salmón</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">4,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Tomate en rodajas, queso fresco y salmón</div>
+          </div>
+
+          <!-- Tostada de Tomate en Rodaja -->
+          <div class="dish-item flex flex-col" data-search="tostada tomate rodaja queso fresco jamon york">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Tostada de Tomate en Rodaja</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">4,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Con queso fresco y jamón york</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 2. SECCIÓN: BOCADILLOS DE LA CASA -->
+    <!-- ========================================== -->
+    <section id="bocadillos" class="menu-section mb-8 scroll-mt-28">
+      <div class="bg-[#F4EFE6] menu-card-border rounded-lg p-4 sm:p-7">
+        
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#A9824F]/40 mb-4">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#7A2020] text-xl sm:text-2xl">bakery_dining</span>
+            <h2 class="font-display text-xl sm:text-2xl font-bold uppercase tracking-wider text-[#3B2A1A]">
+              Bocadillos Tradicionales
+            </h2>
+          </div>
+          <span class="text-xs uppercase tracking-widest text-[#7A6A50] font-display font-bold hidden sm:inline">
+            El Almuerzo Popular
+          </span>
+        </div>
+
+        <!-- BOCADILLO ESTRELLA: EL CAMINO -->
+        <div class="dish-item mb-5 p-3.5 sm:p-4 rounded-lg bg-[#DDCEAE]/60 border-2 border-[#7A2020]/60 relative shadow-sm" data-search="bocadillo el camino solomillo huevo pimiento cebolla pochada estrella especialidad">
+          <div class="absolute -top-3 right-4 px-2.5 py-0.5 bg-[#7A2020] text-white text-[10px] font-bold uppercase tracking-widest rounded shadow">
+            ⭐ Especialidad del Mesón
+          </div>
+          <div class="flex items-baseline justify-between">
+            <div class="font-display font-bold text-lg sm:text-xl text-[#7A2020]">EL CAMINO</div>
+            <div class="dish-dotted-leader border-[#7A2020]/40"></div>
+            <div class="font-display font-extrabold text-lg sm:text-xl text-[#7A2020]">9,00 €</div>
+          </div>
+          <p class="text-sm sm:text-base text-[#3B2A1A] font-medium mt-1">
+            Solomillo, huevo a la plancha, pimiento y cebolla pochada lentamente.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 dish-list">
+
+          <!-- Embutido -->
+          <div class="dish-item flex flex-col" data-search="bocadillo embutido chorizo longaniza morcilla requena">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Embutido de Requena</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">7,50 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Chorizo, longaniza y morcilla artesana</div>
+          </div>
+
+          <!-- Blanco y Negro -->
+          <div class="dish-item flex flex-col" data-search="bocadillo blanco negro morcilla longaniza">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Blanco y Negro</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">7,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Morcilla y longaniza tradicional</div>
+          </div>
+
+          <!-- Chivito -->
+          <div class="dish-item flex flex-col" data-search="bocadillo chivito mayonesa lechuga tomate lomo bacon huevo queso">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Chivito</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,50 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Lomo, bacon, huevo, queso, lechuga, tomate y mayonesa</div>
+          </div>
+
+          <!-- Serranito -->
+          <div class="dish-item flex flex-col" data-search="bocadillo serranito lomo pimiento jamon">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Serranito</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Lomo, pimiento verde frito y jamón serrano</div>
+          </div>
+
+          <!-- Brascada -->
+          <div class="dish-item flex flex-col" data-search="bocadillo brascada ternera jamon cebolla pochada">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Brascada</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Ternera tierna, jamón y cebolla pochada</div>
+          </div>
+
+          <!-- Almusafes -->
+          <div class="dish-item flex flex-col" data-search="bocadillo almusafes sobrasada cebolla pochada queso fundido">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Almusafes</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Sobrasada, cebolla pochada y queso fundido</div>
+          </div>
+
+          <!-- Yo-Si -->
+          <div class="dish-item flex flex-col" data-search="bocadillo yo si lomo jamon cebolla pochada">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Yo-Si</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Lomo, jamón y cebolla pochada</div>
+          </div>
+
+          <!-- Pincho de Lomo BBQ -->
+          <div class="dish-item flex flex-col" data-search="bocadillo pincho taco lomo salsa bbq barbacoa">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Pincho de Lomo BBQ</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">7,50 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Taco de lomo con salsa barbacoa</div>
+          </div>
+
+          <!-- Pollo Rebozado -->
+          <div class="dish-item flex flex-col" data-search="bocadillo pollo pechuga rebozada patata ajoaceite">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Pollo Crujiente</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,50 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Pechuga rebozada con patata y ajoaceite</div>
+          </div>
+
+          <!-- El Calamar -->
+          <div class="dish-item flex flex-col" data-search="bocadillo calamar calamares rebozados mayonesa ajoaceite">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">El Calamar</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Calamares rebozados con mayonesa o ajoaceite</div>
+          </div>
+
+          <!-- El Chipirón -->
+          <div class="dish-item flex flex-col" data-search="bocadillo chipiron chipirones rebozados ajoaceite">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">El Chipirón</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Chipirones rebozados con ajoaceite</div>
+          </div>
+
+          <!-- Marinero -->
+          <div class="dish-item flex flex-col" data-search="bocadillo marinero pota rebozada ajoaceite mayonesa">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Marinero</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Pota rebozada con ajoaceite o mayonesa</div>
+          </div>
+
+          <!-- Clásico -->
+          <div class="dish-item flex flex-col" data-search="bocadillo clasico tortilla francesa jamon plancha">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Clásico</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">7,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Tortilla francesa y jamón a la plancha</div>
+          </div>
+
+          <!-- Tortilla a Elegir -->
+          <div class="dish-item flex flex-col" data-search="bocadillo tortilla carne">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Tortilla & Carne</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">7,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Tortilla a elegir más carne a elegir</div>
+          </div>
+
+          <!-- Magro con Tomate -->
+          <div class="dish-item flex flex-col" data-search="bocadillo magro tomate cerdo">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Magro con Tomate</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">7,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Guiso tradicional de magro estofado</div>
+          </div>
+
+          <!-- Caballa -->
+          <div class="dish-item flex flex-col" data-search="bocadillo caballa anchoa tomate">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Caballa y Anchoa</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Caballa, anchoa del cantábrico y tomate</div>
+          </div>
+
+          <!-- Fresh -->
+          <div class="dish-item flex flex-col" data-search="bocadillo fresh anchoa tomate fresco queso fresco">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Fresh</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">7,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Anchoa, tomate fresco y queso fresco</div>
+          </div>
+
+          <!-- Atún con Aceitunas -->
+          <div class="dish-item flex flex-col" data-search="bocadillo atun aceitunas">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Atún con Aceitunas</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">7,50 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Atún claro y aceitunas</div>
+          </div>
+
+          <!-- Sándwich Mixto -->
+          <div class="dish-item flex flex-col" data-search="sandwich mixto jamon york queso">
+            <div class="flex items-baseline justify-between">
+              <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Sándwich Mixto</div>
+              <div class="dish-dotted-leader"></div>
+              <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">4,00 €</div>
+            </div>
+            <div class="text-xs sm:text-sm text-[#5C4A38] italic">Jamón york y queso fundido</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. SECCIÓN: TAPAS Y RACIONES -->
+    <!-- ========================================== -->
+    <section id="tapas" class="menu-section mb-8 scroll-mt-28">
+      <div class="bg-[#F4EFE6] menu-card-border rounded-lg p-4 sm:p-7">
+        
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#A9824F]/40 mb-4">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#7A2020] text-xl sm:text-2xl">tapas</span>
+            <h2 class="font-display text-xl sm:text-2xl font-bold uppercase tracking-wider text-[#3B2A1A]">
+              Tapas de Barra y Raciones
+            </h2>
+          </div>
+          <span class="text-xs uppercase tracking-widest text-[#7A6A50] font-display font-bold hidden sm:inline">
+            Para compartir al centro
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5 dish-list">
+
+          <!-- Bravas -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa bravas patatas salsa">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Patatas Bravas de la Casa</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">6,00 €</div>
+          </div>
+
+          <!-- Rabo -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa rabo toro estofado">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Rabo Estofado</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+          </div>
+
+          <!-- Morro -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa morro cerdo frito crujiente">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Morro Frito Crujiente</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+          </div>
+
+          <!-- Oreja -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa oreja plancha cerdo">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Oreja a la Plancha</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+          </div>
+
+          <!-- Sartenilla Huevos Rotos y Jamón -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa sartenilla patatas huevos rotos jamon">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Sartenilla Huevos Rotos y Jamón</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">9,00 €</div>
+          </div>
+
+          <!-- Sartenilla Huevos y Embutido -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa sartenilla patatas huevos embutido requena">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Sartenilla Huevos y Embutido</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">9,00 €</div>
+          </div>
+
+          <!-- Taco de Lomo Adobado -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa taco lomo adobado salsa bbq barbacoa">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Taco Lomo Adobado (Salsa BBQ)</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">9,00 €</div>
+          </div>
+
+          <!-- Sepionet Trinchado -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa sepionet trinchado sepia ajo perejil">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Sepionet Trinchado</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">12,00 €</div>
+          </div>
+
+          <!-- Chipirones -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa chipirones fritos plancha">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Chipirones</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">10,00 €</div>
+          </div>
+
+          <!-- Puntilla -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa puntilla calamar frita">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Puntilla de Calamar</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">9,00 €</div>
+          </div>
+
+          <!-- Calamares -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa calamares romana">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Calamares</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">9,00 €</div>
+          </div>
+
+          <!-- Twister de Langostino -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa twister langostino marisco">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Twister de Langostino</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">9,00 €</div>
+          </div>
+
+          <!-- Revuelto de Ajos Tiernos, Espárragos, Gambas y Setas -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa revuelto ajos tiernos esparragos gambas setas">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Revuelto Ajos, Gambas y Setas</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">9,00 €</div>
+          </div>
+
+          <!-- Tabla de Jamón -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa tabla jamon iberico serrano">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Tabla de Jamón</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">12,00 €</div>
+          </div>
+
+          <!-- Tabla de Queso -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa tabla queso curado">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Tabla de Queso Curado</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">10,00 €</div>
+          </div>
+
+          <!-- Queso Frito -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa queso frito">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Queso Frito</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+          </div>
+
+          <!-- Saquito de Queso de Cabra -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa saquito queso cabra">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Saquito de Queso de Cabra</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+          </div>
+
+          <!-- Pollo Crujiente -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa pollo crujiente">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Pollo Crujiente</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+          </div>
+
+          <!-- Alitas -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa alitas pollo">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Alitas de Pollo</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+          </div>
+
+          <!-- Croquetas Variadas -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa croquetas variadas caseras">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Croquetas Variadas</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">8,00 €</div>
+          </div>
+
+          <!-- Mici -->
+          <div class="dish-item flex items-baseline justify-between" data-search="tapa mici carne brasa">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Mici (Especialidad Brasa)</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">2,00 € <span class="text-xs text-[#5C4A38] font-normal">/ud</span></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 4. SECCIÓN: CARNES A LA BRASA (PLATOS COMBINADOS) -->
+    <!-- ========================================== -->
+    <section id="brasas" class="menu-section mb-8 scroll-mt-28">
+      <div class="bg-[#F4EFE6] menu-card-border rounded-lg p-4 sm:p-7">
+        
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#A9824F]/40 mb-2">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#7A2020] text-xl sm:text-2xl">local_fire_department</span>
+            <h2 class="font-display text-xl sm:text-2xl font-bold uppercase tracking-wider text-[#3B2A1A]">
+              Carnes a la Brasa
+            </h2>
+          </div>
+          <span class="text-xs uppercase tracking-widest text-[#7A6A50] font-display font-bold hidden sm:inline">
+            Brasas de Sarmiento
+          </span>
+        </div>
+
+        <!-- Nota de Guarnición y Salsas -->
+        <div class="bg-[#DDCEAE]/50 border border-[#A9824F]/50 rounded p-2.5 sm:p-3 mb-5 text-xs sm:text-sm text-[#3B2A1A]">
+          <span class="font-bold text-[#7A2020]">Guarnición incluida:</span> Todos los platos van acompañados de patatas fritas caseras, huevo y pimiento o ensalada fresca.<br/>
+          <span class="font-bold text-[#7A2020]">Salsas a elegir:</span> Chimichurri casero, salsa a la pimienta verde o salsa picante.
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5 dish-list">
+
+          <!-- Chuletón 500 grs -->
+          <div class="dish-item flex items-baseline justify-between" data-search="carne chuleton 500 gr ternera vaca brasa">
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020]">Chuletón 500 grs</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">28,00 €</div>
+          </div>
+
+          <!-- Entrecot -->
+          <div class="dish-item flex items-baseline justify-between" data-search="carne entrecot ternera brasa">
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020]">Entrecot a la Brasa</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">24,00 €</div>
+          </div>
+
+          <!-- Abanico Ibérico -->
+          <div class="dish-item flex items-baseline justify-between" data-search="carne abanico iberico cerdo brasa">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Abanico Ibérico</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">18,00 €</div>
+          </div>
+
+          <!-- Costillar de Cerdo -->
+          <div class="dish-item flex items-baseline justify-between" data-search="carne costillar cerdo costillas brasa">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Costillar de Cerdo</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">18,00 €</div>
+          </div>
+
+          <!-- Chuletas de Cordero -->
+          <div class="dish-item flex items-baseline justify-between" data-search="carne chuletas cordero brasa">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Chuletas de Cordero</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">16,00 €</div>
+          </div>
+
+          <!-- Secreto Ibérico -->
+          <div class="dish-item flex items-baseline justify-between" data-search="carne secreto iberico cerdo brasa">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Secreto Ibérico</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">15,00 €</div>
+          </div>
+
+          <!-- Solomillo de Cerdo -->
+          <div class="dish-item flex items-baseline justify-between" data-search="carne solomillo cerdo brasa">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Solomillo de Cerdo</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">14,00 €</div>
+          </div>
+
+          <!-- Embutido -->
+          <div class="dish-item flex items-baseline justify-between" data-search="carne embutido requena chorizo morcilla longaniza brasa">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Embutido Tradicional</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">13,00 €</div>
+          </div>
+
+          <!-- Panceta -->
+          <div class="dish-item flex items-baseline justify-between" data-search="carne panceta brasa cerdo">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Panceta a la Brasa</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">10,00 €</div>
+          </div>
+
+          <!-- Pechuga de Pollo -->
+          <div class="dish-item flex items-baseline justify-between" data-search="carne pechuga pollo brasa">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Pechuga de Pollo</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">10,00 €</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 5. SECCIÓN: PESCADOS -->
+    <!-- ========================================== -->
+    <section id="pescados" class="menu-section mb-8 scroll-mt-28">
+      <div class="bg-[#F4EFE6] menu-card-border rounded-lg p-4 sm:p-7">
+        
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#A9824F]/40 mb-2">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#7A2020] text-xl sm:text-2xl">set_meal</span>
+            <h2 class="font-display text-xl sm:text-2xl font-bold uppercase tracking-wider text-[#3B2A1A]">
+              Pescados
+            </h2>
+          </div>
+          <span class="text-xs uppercase tracking-widest text-[#7A6A50] font-display font-bold hidden sm:inline">
+            Acompañados con guarnición
+          </span>
+        </div>
+
+        <div class="text-xs sm:text-sm text-[#5C4A38] italic mb-4">
+          * Todos los pescados van servidos con patatas fritas, huevo y pimiento o ensalada.
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3.5 dish-list">
+
+          <!-- Sepionet -->
+          <div class="dish-item flex items-baseline justify-between" data-search="pescado sepionet sepia plancha">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Sepionet a la Plancha</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">16,00 €</div>
+          </div>
+
+          <!-- Bacalao -->
+          <div class="dish-item flex items-baseline justify-between" data-search="pescado bacalao">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Bacalao</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">15,00 €</div>
+          </div>
+
+          <!-- Emperador -->
+          <div class="dish-item flex items-baseline justify-between" data-search="pescado emperador pez espada plancha">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Emperador a la Plancha</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">15,00 €</div>
+          </div>
+
+          <!-- Calamares -->
+          <div class="dish-item flex items-baseline justify-between" data-search="pescado calamares">
+            <div class="font-display font-semibold text-base sm:text-lg text-[#3B2A1A]">Calamares</div>
+            <div class="dish-dotted-leader"></div>
+            <div class="font-display font-bold text-base sm:text-lg text-[#7A2020] whitespace-nowrap">14,00 €</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 6. SECCIÓN: COMBOS ESPECIALES PARA COMPARTIR -->
+    <!-- ========================================== -->
+    <section id="combos" class="menu-section mb-10 scroll-mt-28">
+      <div class="bg-[#F4EFE6] menu-card-border rounded-lg p-4 sm:p-7">
+        
+        <div class="flex items-center justify-between pb-3 border-b-2 border-[#A9824F]/40 mb-5">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#7A2020] text-xl sm:text-2xl">group</span>
+            <h2 class="font-display text-xl sm:text-2xl font-bold uppercase tracking-wider text-[#3B2A1A]">
+              Combos Especiales para Compartir
+            </h2>
+          </div>
+          <span class="text-xs uppercase tracking-widest text-[#7A2020] font-display font-bold">
+            2 Personas
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 dish-list">
+
+          <!-- Combo 1: Parrillada de Carne -->
+          <article class="dish-item p-4 sm:p-5 rounded-lg bg-[#DDCEAE]/50 border-2 border-[#7A2020] shadow-md flex flex-col justify-between" data-search="combo parrillada carne dos personas panceta longaniza chorizo morcilla abanico secreto patatas pimientos huevos">
+            <div>
+              <div class="flex items-start justify-between gap-3 mb-2">
+                <span class="px-2.5 py-0.5 bg-[#7A2020] text-white text-[11px] font-display uppercase tracking-widest font-bold rounded">
+                  Brasa & Huerta
+                </span>
+                <span class="font-display text-2xl sm:text-3xl font-extrabold text-[#7A2020]">
+                  30 €
+                </span>
+              </div>
+              <h3 class="font-display text-lg sm:text-xl font-bold text-[#3B2A1A] uppercase">
+                Parrillada para Dos Personas
+              </h3>
+              <p class="font-body text-sm sm:text-base text-[#3B2A1A] mt-2 leading-relaxed">
+                Una panceta, una longaniza, un chorizo, una morcilla artesana, y corte ibérico a elegir (abanico o secreto).
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-[#A9824F]/30 text-xs sm:text-sm text-[#5C4A38] italic font-semibold flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm text-[#7A2020]">check_circle</span>
+                Acompañado con patatas caseras, pimientos y huevos.
+              </div>
+            </div>
+          </article>
+
+          <!-- Combo 2: Fritura de Pescado -->
+          <article class="dish-item p-4 sm:p-5 rounded-lg bg-[#DDCEAE]/50 border-2 border-[#2D6A4F] shadow-md flex flex-col justify-between" data-search="combo fritura pescado dos personas calamares sepia rebozada chipirones puntilla pescadito patatas pimientos huevos">
+            <div>
+              <div class="flex items-start justify-between gap-3 mb-2">
+                <span class="px-2.5 py-0.5 bg-[#2D6A4F] text-white text-[11px] font-display uppercase tracking-widest font-bold rounded">
+                  Mar & Parada
+                </span>
+                <span class="font-display text-2xl sm:text-3xl font-extrabold text-[#2D6A4F]">
+                  35 €
+                </span>
+              </div>
+              <h3 class="font-display text-lg sm:text-xl font-bold text-[#3B2A1A] uppercase">
+                Fritura de Pescado para Dos
+              </h3>
+              <p class="font-body text-sm sm:text-base text-[#3B2A1A] mt-2 leading-relaxed">
+                Calamares tiernos, sepia rebozada dorada, chipirones, puntilla crujiente y pescadito frito.
+              </p>
+              <div class="mt-3 pt-2.5 border-t border-[#A9824F]/30 text-xs sm:text-sm text-[#5C4A38] italic font-semibold flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm text-[#2D6A4F]">check_circle</span>
+                Acompañada con patatas caseras, pimientos y huevos.
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Información de Alérgenos y Horarios del Mesón -->
+    <div class="text-center p-4 rounded bg-[#DDCEAE]/40 border border-[#A9824F]/40 text-xs sm:text-sm text-[#5C4A38] mb-6">
+      <div class="flex items-center justify-center gap-1.5 font-bold text-[#3B2A1A] mb-1">
+        <span class="material-symbols-outlined text-base text-[#A9824F]">schedule</span> Horario Oficial: Todos los días de 06:00 a 16:00 h
+      </div>
+      <p class="font-semibold text-[#7A2020] mb-2">Desayunos de pueblo, brasas de sarmiento y almuerzos tradicionales.</p>
+      <div class="text-[11px] sm:text-xs text-[#5C4A38] pt-2 border-t border-[#A9824F]/30">
+        <span class="font-bold text-[#3B2A1A]">Información de Alérgenos:</span> Si padece alguna alergia o intolerancia alimentaria, por favor consulte a nuestro personal de sala antes de realizar su pedido. Disponemos de carta de alérgenos bajo demanda.
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- BOTÓN FLOTANTE VOLVER ARRIBA (MÓVIL) -->
+  <!-- ========================================== -->
+  <button id="btn-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-20 sm:bottom-6 right-3 sm:right-6 z-40 w-11 h-11 rounded-full bg-[#3B2A1D]/95 text-[#DDCEAE] hover:text-white border-2 border-[#A9824F]/70 shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 active:scale-90" aria-label="Volver arriba">
+    <span class="material-symbols-outlined text-xl">arrow_upward</span>
+  </button>
+
+  <!-- ========================================== -->
+  <!-- BARRA FLOTANTE INFERIOR MÓVIL (DOCK DE MESA) -->
+  <!-- ========================================== -->
+  <aside class="fixed bottom-0 left-0 right-0 z-40 bg-[#3B2A1D]/98 backdrop-blur-md border-t-2 border-[#A9824F]/60 px-3 pt-2 bottom-bar-safe text-white shadow-[0_-6px_24px_rgba(0,0,0,0.4)] md:hidden" aria-label="Acciones rápidas de mesa">
+    <div class="max-w-md mx-auto grid grid-cols-3 gap-2 text-center text-xs font-headline-sm uppercase tracking-wider font-bold">
+      <!-- 1. Llamar -->
+      <a href="tel:+34666056955" class="py-2 px-1 rounded-md bg-[#4A3626] border border-[#A9824F]/40 flex flex-col items-center justify-center active:scale-95 text-[#F4EFE6] transition-all" aria-label="Llamar al restaurante">
+        <span class="material-symbols-outlined text-xl text-[#DDCEAE]">call</span>
+        <span class="text-[10px] mt-0.5 tracking-wider">Llamar</span>
+      </a>
+
+      <!-- 2. WhatsApp Mesa -->
+      <a href="https://wa.me/34666056955?text=Hola,%20estamos%20en%20el%20mes%C3%B3n%20y%20quisi%C3%A9ramos%20consultar%20sobre%20la%20carta%20o%20hacer%20un%20pedido." target="_blank" rel="noopener" class="py-2 px-1 rounded-md bg-[#2D6A4F] border border-[#2D6A4F]/60 flex flex-col items-center justify-center active:scale-95 text-white shadow-sm transition-all" aria-label="Pedir por WhatsApp">
+        <span class="material-symbols-outlined text-xl">chat</span>
+        <span class="text-[10px] mt-0.5 tracking-wider">Pedir Mesa</span>
+      </a>
+
+      <!-- 3. Volver a la portada -->
+      <a href="index.html" class="py-2 px-1 rounded-md bg-[#7A2020] border border-[#A9824F]/40 flex flex-col items-center justify-center active:scale-95 text-white transition-all" aria-label="Volver a la portada del mesón">
+        <span class="material-symbols-outlined text-xl text-[#DDCEAE]">home</span>
+        <span class="text-[10px] mt-0.5 tracking-wider">Portada</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Toast de notificación (copiar enlace) -->
+  <div id="toast-msg" class="fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-[#3B2A1D] text-[#F4EFE6] border border-[#A9824F] px-4 py-2 rounded-full shadow-2xl text-xs font-semibold uppercase tracking-wider transition-all duration-300 opacity-0 pointer-events-none">
+    Enlace copiado al portapapeles
+  </div>
+
+  <!-- Scripts interactivos optimizados para móvil -->
+  <script>
+    // 1. Desplazamiento suave con compensación de cabecera pegajosa (evita que el header tape el título)
+    function scrollToCat(catId) {
+      const target = document.getElementById(catId);
+      if (!target) return;
+      const isModal = document.documentElement.classList.contains('in-modal');
+      const headerOffset = isModal ? 52 : 108; // Si está en modal la cabecera está oculta
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+
+    // 2. Filtrador de platos en tiempo real y ocultación de secciones vacías
+    function handleSearch(val) {
+      const q = val.trim().toLowerCase();
+      const clearBtn = document.getElementById('clear-search-btn');
+      const counterEl = document.getElementById('search-counter');
+      const noResultsMsg = document.getElementById('no-results-msg');
+      const noResultsText = document.getElementById('no-results-text');
+
+      if (clearBtn) {
+        if (q.length > 0) {
+          clearBtn.classList.remove('hidden');
+        } else {
+          clearBtn.classList.add('hidden');
+        }
+      }
+
+      const dishes = document.querySelectorAll('.dish-item');
+      let visibleCount = 0;
+
+      dishes.forEach(dish => {
+        const searchKeywords = dish.getAttribute('data-search') || '';
+        const textContent = dish.textContent.toLowerCase();
+
+        if (q === '' || searchKeywords.includes(q) || textContent.includes(q)) {
+          dish.style.display = '';
+          visibleCount++;
+        } else {
+          dish.style.display = 'none';
+        }
+      });
+
+      // Ocultar o mostrar secciones completas si no tienen platos visibles
+      const sections = document.querySelectorAll('.menu-section');
+      sections.forEach(sec => {
+        const items = sec.querySelectorAll('.dish-item');
+        let hasVisible = false;
+        items.forEach(it => {
+          if (it.style.display !== 'none') hasVisible = true;
+        });
+        sec.style.display = hasVisible ? '' : 'none';
+      });
+
+      // Mostrar contador o estado vacío
+      if (counterEl) {
+        if (q.length > 0) {
+          counterEl.classList.remove('hidden');
+          counterEl.textContent = `Mostrando ${visibleCount} plato${visibleCount === 1 ? '' : 's'} encontrado${visibleCount === 1 ? '' : 's'}`;
+        } else {
+          counterEl.classList.add('hidden');
+        }
+      }
+
+      if (noResultsMsg) {
+        if (visibleCount === 0 && q.length > 0) {
+          noResultsMsg.classList.remove('hidden');
+          if (noResultsText) noResultsText.textContent = `No hay ningún plato que coincida con "${val}".`;
+        } else {
+          noResultsMsg.classList.add('hidden');
+        }
+      }
+    }
+
+    function clearSearch() {
+      const input = document.getElementById('dish-search-input');
+      if (input) {
+        input.value = '';
+        handleSearch('');
+        input.focus();
+      }
+    }
+
+    // 3. Compartir carta mediante Web Share API nativa o copia de portapapeles
+    function shareMenu() {
+      const shareData = {
+        title: 'Carta y Menú - Bar El Camino (Requena)',
+        text: 'Consulta la carta completa de Bar El Camino en Requena: bocadillos, tapas, brasas y pescados.',
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        navigator.share(shareData).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          showToast('Enlace copiado al portapapeles');
+        }).catch(() => {
+          showToast('URL: ' + window.location.href);
+        });
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-msg');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2500);
+    }
+
+    // 4. Actualizar categoría activa según el scroll + visibilidad botón volver arriba
+    const sections = document.querySelectorAll('section.menu-section');
+    const navPills = document.querySelectorAll('.cat-pill');
+    const backToTopBtn = document.getElementById('btn-back-to-top');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.pageYOffset;
+
+      // Mostrar/ocultar botón volver arriba
+      if (backToTopBtn) {
+        if (scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+          backToTopBtn.classList.add('opacity-100');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+          backToTopBtn.classList.remove('opacity-100');
+        }
+      }
+
+      // Sincronizar píldoras con la sección en pantalla
+      let current = '';
+      sections.forEach(section => {
+        if (section.style.display === 'none') return;
+        const sectionTop = section.offsetTop - 140;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      if (current) {
+        navPills.forEach(pill => {
+          pill.classList.remove('active');
+          if (pill.getAttribute('data-target') === current) {
+            pill.classList.add('active');
+            // Auto-scroll horizontal suave del carrusel de píldoras
+            pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        });
+      }
+    }, { passive: true });
+
+    // 5. Soporte cuando la carta se abre dentro de la ventana modal (iframe)
+    if (window.self !== window.top) {
+      function adaptForModal() {
+        const topBackBtn = document.querySelector('header a[href="index.html"]');
+        if (topBackBtn) {
+          topBackBtn.removeAttribute('href');
+          topBackBtn.setAttribute('role', 'button');
+          topBackBtn.innerHTML = '<span class="material-symbols-outlined text-lg sm:text-xl text-[#F4EFE6]">close</span><span class="font-bold text-[#F4EFE6]">Cerrar</span>';
+          topBackBtn.classList.add('bg-[#7A2020]', 'hover:bg-[#631818]', 'border-[#A9824F]');
+          topBackBtn.onclick = function(e) {
+            e.preventDefault();
+            window.parent.postMessage('close-menu-modal', '*');
+          };
+        }
+        const dockHomeBtn = document.querySelector('aside a[href="index.html"]');
+        if (dockHomeBtn) {
+          dockHomeBtn.removeAttribute('href');
+          dockHomeBtn.setAttribute('role', 'button');
+          dockHomeBtn.innerHTML = '<span class="material-symbols-outlined text-xl text-[#DDCEAE]">close</span><span class="text-[10px] mt-0.5 tracking-wider font-bold">Cerrar</span>';
+          dockHomeBtn.onclick = function(e) {
+            e.preventDefault();
+            window.parent.postMessage('close-menu-modal', '*');
+          };
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', adaptForModal);
+      } else {
+        adaptForModal();
+      }
+    }
+  </script>
+
+</body>
+</html>

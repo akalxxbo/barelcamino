@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="web_standard" name="shell-type"/>
+  <title>BAR · EL CAMINO · RTE | Mesón Histórico y Parada en Requena</title>
+  <meta name="description" content="Casa de comidas y parada gastronómica en Requena, en el histórico Camino Real entre Valencia y Cuenca. Brasas de sarmiento, almuerzos populares y hospitalidad castellano-levantina."/>
+  
+  <!-- Google Fonts: EB Garamond, Playfair Display, Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            surface: "#EAE0CC",
+            "surface-dim": "#D2C2A0",
+            "surface-bright": "#F4EFE6",
+            "surface-container-lowest": "#F9F6F0",
+            "surface-container-low": "#E5D8BE",
+            "surface-container": "#DDCEAE",
+            "surface-container-high": "#D2C2A0",
+            "surface-container-highest": "#C9B896",
+            "on-surface": "#3B2A1A",
+            "on-surface-variant": "#5C4A38",
+            "inverse-surface": "#3B2A1D",
+            "inverse-on-surface": "#EAE0CC",
+            outline: "#A9824F",
+            "outline-variant": "#C9B896",
+            "surface-tint": "#7A2020",
+            primary: "#7A2020",
+            "on-primary": "#ffffff",
+            "primary-container": "#631818",
+            "on-primary-container": "#F4EFE6",
+            "inverse-primary": "#A94444",
+            secondary: "#7A6A50",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#A9824F",
+            "on-secondary-container": "#3B2A1A",
+            tertiary: "#3B2A1D",
+            "on-tertiary": "#ffffff",
+            "tertiary-container": "#A9824F",
+            "on-tertiary-container": "#EAE0CC",
+            error: "#7A2020",
+            "on-error": "#ffffff",
+            "error-container": "#DDCEAE",
+            "on-error-container": "#7A2020",
+            background: "#EAE0CC",
+            "on-background": "#3B2A1A"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          spacing: {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.75rem",
+            "space-xl": "2.5rem",
+            margin: "2.5rem",
+            "margin-mobile": "1.25rem",
+            gutter: "1.5rem",
+            "gutter-mobile": "1rem"
+          },
+          fontFamily: {
+            "display-lg": ["Playfair Display", "serif"],
+            "headline-lg": ["Playfair Display", "serif"],
+            "headline-md": ["Playfair Display", "serif"],
+            "headline-sm": ["Playfair Display", "serif"],
+            "label-lg": ["Playfair Display", "serif"],
+            "label-md": ["Playfair Display", "serif"],
+            "label-sm": ["EB Garamond", "serif"],
+            "body-lg": ["EB Garamond", "serif"],
+            "body-md": ["EB Garamond", "serif"],
+            "body-sm": ["EB Garamond", "serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 4.5rem;
+      }
+      @media (min-width: 640px) {
+        html {
+          scroll-padding-top: 5.5rem;
+        }
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Grabado del Camino - Hero Cartográfico Full-Bleed */
+    .hero-mapa-recuadro {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      border-radius: 0.75rem;
+      width: 100%;
+      max-width: 80rem;
+      aspect-ratio: 1024 / 558;
+      height: auto;
+      margin: 0 auto;
+      border: 2px solid rgba(169, 130, 79, 0.45);
+      box-shadow: 0 10px 30px -4px rgba(59, 42, 29, 0.25);
+      background: #3B2A1D;
+    }
+    @media (max-width: 639px) {
+      .hero-mapa-recuadro {
+        aspect-ratio: 1024 / 558 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: unset !important;
+        max-height: none !important;
+      }
+      .hero-mapa-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        object-position: center !important;
+      }
+      .hero-mapa-badge {
+        top: 6px;
+        padding: 2px 8px;
+        max-width: 95%;
+      }
+      .hero-mapa-footer {
+        padding: 6px 10px;
+      }
+      .hero-mapa-recuadro::after {
+        background: linear-gradient(to top, rgba(30, 20, 13, 0.85) 0%, rgba(30, 20, 13, 0.3) 25%, transparent 50%);
+      }
+    }
+    .hero-mapa-recuadro::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30, 20, 13, 0.88) 0%, rgba(30, 20, 13, 0.3) 45%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-mapa-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+    .hero-mapa-badge {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+    .hero-mapa-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+      padding: 16px 24px;
+      box-sizing: border-box;
+    }
+
+    /* Ergonomía táctil y prevención de auto-zoom forzado en móviles iOS */
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+    @media (min-width: 640px) {
+      input, select, textarea {
+        font-size: 0.875rem !important;
+      }
+    }
+
+    /* Soporte para SafeArea en dispositivos con notch (iPhone) */
+    .pb-safe {
+      padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0.5rem));
+    }
+
+    /* ===================================================
+       TEXTURAS DE PAPEL ENVEJECIDO (APLICACIÓN JERÁRQUICA)
+       =================================================== */
+
+    /* 1. Hero del mapa (Fondo completo fijo con brillo optimizado) */
+    .hero-paper-bg {
+      position: relative;
+      overflow: hidden;
+      background-color: #EAE0CC;
+    }
+    .hero-paper-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('paper-texture.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.38;
+      filter: brightness(1.08) contrast(0.92);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* 2. Secciones intermedias: Textura muy sutil en tarjetas (10-15%) */
+    .card-paper-subtle {
+      position: relative;
+      overflow: hidden;
+    }
+    .card-paper-subtle::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('paper-texture.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.12;
+      filter: brightness(1.06) contrast(0.95);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* 3. Sección 'El viaje continúa' (Textura más presente y fija) */
+    .section-paper-prominent {
+      position: relative;
+      overflow: hidden;
+      background-color: #E2D5BE;
+    }
+    .section-paper-prominent::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('paper-texture.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.40;
+      filter: brightness(1.06) contrast(0.92);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* 4. Footer con textura sutil en capa fija sobre el fondo oscuro */
+    .footer-paper-bg {
+      position: relative;
+      overflow: hidden;
+      background-color: #3B2A1D;
+    }
+    .footer-paper-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('paper-texture.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.16;
+      mix-blend-mode: overlay;
+      filter: brightness(1.15) contrast(1.05);
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-[#7A2020] selection:text-white">
+
+  <!-- ========================================== -->
+  <!-- HEADER NAVEGACIÓN -->
+  <!-- ========================================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#3B2A1D]/95 backdrop-blur-md shadow-[0_4px_20px_-2px_rgba(40,24,15,0.35)] border-b border-[#A9824F]/30">
+    <div class="max-w-7xl mx-auto px-3 sm:px-margin-mobile lg:px-margin h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Logotipo & Título Histórico -->
+      <a class="flex flex-col justify-center text-left min-h-[44px] group" href="#" aria-label="Inicio Bar El Camino">
+        <span class="font-headline-sm text-lg sm:text-xl text-[#F4EFE6] tracking-wider uppercase font-bold leading-tight group-hover:text-white transition-colors">BAR · EL CAMINO</span>
+        <span class="font-label-sm text-[10px] sm:text-xs text-[#C9B896] tracking-widest uppercase mt-0.5 hidden xs:inline">Mesón &amp; Parada · Requena</span>
+      </a>
+
+      <!-- Menú Desktop -->
+      <nav class="hidden lg:flex items-center gap-space-lg">
+        <a class="font-label-lg text-sm uppercase tracking-wider text-[#DDCEAE] hover:text-[#FFFFFF] transition-colors py-1" href="#historia">El Camino</a>
+        <a class="font-label-lg text-sm uppercase tracking-wider text-[#DDCEAE] hover:text-[#FFFFFF] transition-colors py-1" href="#fogones">Fogones &amp; Esencia</a>
+        <a class="font-label-lg text-sm uppercase tracking-wider text-[#DDCEAE] hover:text-[#FFFFFF] transition-colors py-1" href="#espacios">Espacios</a>
+        <a class="font-label-lg text-sm uppercase tracking-wider text-[#DDCEAE] hover:text-[#FFFFFF] transition-colors py-1" href="#reservas">Reservas &amp; Contacto</a>
+        <button type="button" onclick="openMenuModal()" class="font-label-lg text-xs uppercase tracking-wider text-[#F4EFE6] bg-[#7A2020] hover:bg-[#631818] border border-[#A9824F]/60 px-3 py-1.5 rounded transition-all font-bold flex items-center gap-1.5 shadow-sm active:scale-95 cursor-pointer">
+          <span class="material-symbols-outlined text-base text-[#DDCEAE]">restaurant_menu</span>
+          Carta &amp; Menú
+        </button>
+      </nav>
+
+      <!-- Botón de Acción y Menú Hamburguesa Móvil -->
+      <div class="flex items-center gap-2 sm:gap-space-md">
+        <!-- Llamada telefónica directa en móvil -->
+        <a href="tel:+34666056955" class="lg:hidden p-2 text-[#DDCEAE] hover:text-white rounded border border-[#A9824F]/40 hover:bg-[#4A3626] transition-colors flex items-center justify-center min-w-[40px] min-h-[40px]" title="Llamar al restaurante">
+          <span class="material-symbols-outlined text-xl">call</span>
+        </a>
+        <a class="hidden sm:inline-flex items-center justify-center gap-1.5 px-3 sm:px-space-md py-1.5 sm:py-space-sm bg-[#2D6A4F] text-white font-headline-sm text-xs sm:text-sm uppercase tracking-widest hover:bg-[#1E4A37] transition-colors shadow-[0_2px_8px_rgba(0,0,0,0.35)] border border-[#2D6A4F]/50 rounded font-semibold" href="https://wa.me/34666056955?text=Hola,%20quisiera%20reservar%20una%20mesa%20en%20Bar%20El%20Camino%20Rte." target="_blank" rel="noopener">
+          <span class="material-symbols-outlined text-base">chat</span> WhatsApp Reservas
+        </a>
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded text-[#DDCEAE] hover:bg-[#4A3626] transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center border border-[#A9824F]/30" aria-label="Abrir menú" onclick="toggleMobileMenu()">
+          <span id="menu-icon" class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#3B2A1D] border-b-2 border-[#A9824F]/50 px-4 py-4 shadow-2xl transition-all">
+      <div class="flex flex-col gap-2">
+        <!-- Botón Destacado: Ver Carta Completa -->
+        <button type="button" onclick="toggleMobileMenu(); openMenuModal();" class="w-full text-left font-headline-sm text-sm uppercase tracking-wider text-[#F4EFE6] bg-[#7A2020] hover:bg-[#631818] px-3.5 py-3 rounded border border-[#A9824F]/60 flex items-center justify-between shadow-md mb-2 active:scale-95 transition-all cursor-pointer">
+          <span class="flex items-center gap-2 font-bold"><span class="material-symbols-outlined text-[#DDCEAE] text-lg">restaurant_menu</span> Ver Carta Completa &amp; Precios</span>
+          <span class="text-xs bg-[#F4EFE6] text-[#7A2020] font-bold px-2 py-0.5 rounded shadow-sm">Ver Menú</span>
+        </button>
+        <a class="font-headline-sm text-sm uppercase tracking-wider text-[#F4EFE6] hover:text-white py-2 border-b border-[#A9824F]/20 flex items-center justify-between" href="#historia" onclick="toggleMobileMenu()">
+          <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[#A9824F] text-base">route</span> El Camino Histórico</span>
+          <span class="material-symbols-outlined text-sm text-[#C9B896]">chevron_right</span>
+        </a>
+        <a class="font-headline-sm text-sm uppercase tracking-wider text-[#F4EFE6] hover:text-white py-2 border-b border-[#A9824F]/20 flex items-center justify-between" href="#fogones" onclick="toggleMobileMenu()">
+          <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[#A9824F] text-base">local_fire_department</span> Fogones &amp; Tradición</span>
+          <span class="material-symbols-outlined text-sm text-[#C9B896]">chevron_right</span>
+        </a>
+        <a class="font-headline-sm text-sm uppercase tracking-wider text-[#F4EFE6] hover:text-white py-2 border-b border-[#A9824F]/20 flex items-center justify-between" href="#espacios" onclick="toggleMobileMenu()">
+          <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[#A9824F] text-base">hub</span> Nuestros Espacios</span>
+          <span class="material-symbols-outlined text-sm text-[#C9B896]">chevron_right</span>
+        </a>
+        <a class="font-headline-sm text-sm uppercase tracking-wider text-[#F4EFE6] hover:text-white py-2 border-b border-[#A9824F]/20 flex items-center justify-between" href="#reservas" onclick="toggleMobileMenu()">
+          <span class="flex items-center gap-2"><span class="material-symbols-outlined text-[#A9824F] text-base">calendar_month</span> Contacto &amp; Reservas</span>
+          <span class="material-symbols-outlined text-sm text-[#C9B896]">chevron_right</span>
+        </a>
+
+        <!-- Accesos rápidos dentro del menú desplegable móvil -->
+        <div class="pt-3 grid grid-cols-2 gap-2 mt-1">
+          <a href="tel:+34666056955" class="flex items-center justify-center gap-1.5 py-2.5 px-2 bg-[#4A3626] border border-[#A9824F]/50 rounded text-[#F4EFE6] font-headline-sm text-xs uppercase tracking-wider font-semibold active:scale-95">
+            <span class="material-symbols-outlined text-sm text-[#DDCEAE]">call</span> 666 05 69 55
+          </a>
+          <a href="https://maps.app.goo.gl/5Fzs9HDNN4gnpoDg9" target="_blank" rel="noopener" class="flex items-center justify-center gap-1.5 py-2.5 px-2 bg-[#4A3626] border border-[#A9824F]/50 rounded text-[#F4EFE6] font-headline-sm text-xs uppercase tracking-wider font-semibold active:scale-95">
+            <span class="material-symbols-outlined text-sm text-[#A9824F]">navigation</span> Cómo Llegar
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- CONTENIDO PRINCIPAL -->
+  <!-- ========================================== -->
+  <main class="w-full pt-16 sm:pt-20 bg-surface pb-16 lg:pb-0">
+    <div class="flex flex-col w-full selection:bg-[#7A2020] selection:text-white font-body-md text-on-surface">
+
+      <!-- ========================================== -->
+      <!-- HERO SECTION : CAMINO REAL CON TEXTURA DE PAPEL FIJA -->
+      <!-- ========================================== -->
+      <section class="relative w-full hero-paper-bg px-3 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-8 sm:pb-10 overflow-hidden border-b border-[#C9B896]/40">
+        <div class="relative max-w-7xl mx-auto flex flex-col items-center z-10">
+          
+          <!-- RECUADRO HERO: EL MAPA DEL CAMINO OCUPA TODO EL RECUADRO DE BORDE A BORDE -->
+          <div class="hero-mapa-recuadro group">
+            
+            <!-- Badge Superior Superpuesto -->
+            <div class="hero-mapa-badge flex items-center justify-center gap-1 sm:gap-2 px-2.5 sm:px-4 py-1 sm:py-1.5 bg-[#7A2020]/95 text-white border border-[#A9824F]/60 rounded shadow-lg text-center">
+              <span class="material-symbols-outlined text-xs sm:text-base text-[#DDCEAE]">explore</span>
+              <span class="font-headline-sm text-[10px] sm:text-xs md:text-sm uppercase tracking-wider sm:tracking-widest font-bold whitespace-nowrap">Camino Real Cuenca — Requena — Valencia</span>
+              <span class="material-symbols-outlined text-xs sm:text-base text-[#DDCEAE]">route</span>
+            </div>
+
+            <!-- Imagen del Mapa Histórico con fetchpriority para carga ultrarrápida en móvil -->
+            <img alt="Mapa histórico del Camino Real Valencia - Requena - Cuenca y Bar El Camino" class="hero-mapa-img transition duration-700 group-hover:scale-[1.02]" fetchpriority="high" src="mapa-camino-1928.jpg"/>
+
+            <!-- Franja Inferior Superpuesta sobre el Degradado con Hito y CTA -->
+            <div class="hero-mapa-footer flex flex-row items-center justify-between gap-2 sm:gap-3 text-white">
+              <div class="flex items-center gap-1 sm:gap-2">
+                <span class="font-headline-sm text-[11px] sm:text-sm md:text-base tracking-wide flex items-center gap-1 sm:gap-1.5 drop-shadow font-semibold text-[#F4EFE6] whitespace-nowrap">
+                  <span class="material-symbols-outlined text-[#A9824F] text-sm sm:text-lg">star</span> Parada: Requena (Km 278)
+                </span>
+              </div>
+              
+              <div class="flex items-center justify-end">
+                <a href="https://wa.me/34666056955?text=Hola,%20quisiera%20reservar%20una%20mesa%20en%20Bar%20El%20Camino%20Rte." target="_blank" rel="noopener" class="px-2.5 sm:px-5 py-1 sm:py-2.5 bg-[#2D6A4F] hover:bg-[#1E4A37] active:scale-95 text-white font-headline-sm text-[10px] sm:text-sm uppercase tracking-wider rounded shadow transition flex items-center gap-1 sm:gap-2 border border-[#2D6A4F]/50 font-bold whitespace-nowrap min-h-[30px] sm:min-h-[40px]">
+                  <span class="material-symbols-outlined text-xs sm:text-base">chat</span>
+                  Reservar WhatsApp
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Presentación del Mesón & Coordenadas de viaje -->
+          <div class="relative max-w-5xl mx-auto flex flex-col items-center text-center mt-6 sm:mt-8 px-2">
+            <h1 class="font-display-lg text-2xl sm:text-3xl md:text-4xl text-[#3B2A1A] tracking-wider uppercase mb-2 font-bold">
+              BAR · EL CAMINO · RTE
+            </h1>
+            <p class="max-w-3xl font-body-lg text-sm sm:text-base md:text-lg text-[#5C4A38] italic mb-5 sm:mb-6 leading-relaxed">
+              “Parada obligada y mesón de viajeros en la senda histórica entre Valencia y la serranía de Cuenca. Brasas de sarmiento, guisos tradicionales y vinos centenarios de Bobal en Requena.”
+            </p>
+
+            <!-- Botón Carta y Menú (Abre ventana modal) -->
+            <div class="flex justify-center w-full">
+              <button type="button" onclick="openMenuModal()" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#7A2020] hover:bg-[#631818] active:scale-95 text-white font-headline-sm text-xs sm:text-sm uppercase tracking-wider font-bold rounded shadow-md border border-[#A9824F]/60 transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-lg text-[#DDCEAE]">menu_book</span>
+                Ver Carta y Menú
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- ITINERARIO HISTÓRICO VISUAL: HITOS DEL CAMINO (DE CUENCA A VALENCIA) -->
+      <!-- ========================================== -->
+      <section id="historia" class="w-full bg-[#DDCEAE] py-space-lg border-y border-[#C9B896] scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-margin-mobile lg:px-margin">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-label-md text-xs sm:text-sm uppercase tracking-wider text-[#7A6A50] flex items-center gap-2 font-bold">
+              <span class="material-symbols-outlined text-base text-[#A9824F]">route</span> Itinerario del Camino Real: Cuenca — Requena — Valencia
+            </span>
+            <span class="text-xs font-body-sm text-[#7A6A50] hidden sm:inline">Traspaso de carruajes y refrigerio del caminante</span>
+            <span class="text-[11px] font-label-sm uppercase text-[#7A6A50] sm:hidden flex items-center gap-1 font-semibold">
+              <span class="material-symbols-outlined text-xs">arrow_back</span> Deslizar <span class="material-symbols-outlined text-xs">arrow_forward</span>
+            </span>
+          </div>
+
+          <!-- Stepper / Camino con Estrella en Requena: de Cuenca a Valencia de izquierda a derecha -->
+          <div id="itinerary-scroll" class="overflow-x-auto pb-4 pt-2 -mx-margin-mobile px-margin-mobile lg:mx-0 lg:px-0 scroll-smooth cursor-grab active:cursor-grabbing select-none">
+            <div class="flex items-center min-w-[760px] justify-between relative px-4">
+              <!-- Línea punteada de fondo -->
+              <div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-[2px] border-b-2 border-dashed border-[#A9824F]/60 z-0"></div>
+              
+              <!-- Estación 1: Cuenca -->
+              <div class="relative z-10 flex flex-col items-center text-center group">
+                <div class="w-9 h-9 rounded-full bg-[#EAE0CC] border-2 border-[#A9824F] flex items-center justify-center text-[#7A6A50] shadow-sm group-hover:border-[#7A2020] transition-colors">
+                  <span class="material-symbols-outlined text-sm">church</span>
+                </div>
+                <span class="font-headline-sm text-xs mt-2 font-bold text-[#3B2A1A]">Cuenca</span>
+                <span class="text-[11px] text-[#5C4A38] font-bold">129 km</span>
+              </div>
+              <div class="text-[#A9824F] text-xs opacity-75 z-10 font-bold">···</div>
+
+              <!-- Estación 2: Mira / Serranía -->
+              <div class="relative z-10 flex flex-col items-center text-center">
+                <div class="w-7 h-7 rounded-full bg-[#EAE0CC] border border-[#A9824F]/70 flex items-center justify-center text-[#7A6A50] text-xs">
+                  <span class="material-symbols-outlined text-xs">terrain</span>
+                </div>
+                <span class="font-body-md text-xs mt-2 text-[#3B2A1A] font-semibold">Mira</span>
+                <span class="text-[11px] text-[#5C4A38] font-bold">45 km</span>
+              </div>
+              <div class="text-[#A9824F] text-xs opacity-75 z-10 font-bold">···</div>
+
+              <!-- Estación 3: Utiel -->
+              <div class="relative z-10 flex flex-col items-center text-center">
+                <div class="w-7 h-7 rounded-full bg-[#EAE0CC] border border-[#A9824F]/70 flex items-center justify-center text-[#7A6A50] text-xs">
+                  <span class="material-symbols-outlined text-xs">wine_bar</span>
+                </div>
+                <span class="font-body-md text-xs mt-2 text-[#3B2A1A] font-semibold">Utiel</span>
+                <span class="text-[11px] text-[#5C4A38] font-bold">13 km</span>
+              </div>
+              <div class="text-[#A9824F] text-xs opacity-75 z-10 font-bold">···</div>
+
+              <!-- HITO CENTRAL: REQUENA (ESTRELLA ROJO VINO) -->
+              <div id="station-requena" class="relative z-10 flex flex-col items-center text-center transform -translate-y-1">
+                <div class="w-12 h-12 rounded-full bg-[#7A2020] text-white flex items-center justify-center shadow-lg border-2 border-[#A9824F] animate-pulse">
+                  <span class="material-symbols-outlined text-2xl text-[#DDCEAE]">star</span>
+                </div>
+                <span class="font-headline-sm text-sm mt-1.5 font-bold text-[#7A2020] tracking-wide">REQUENA</span>
+                <span class="text-[11px] font-semibold text-[#7A6A50] px-2 py-0.5 bg-[#EAE0CC] rounded border border-[#A9824F]/40 mt-0.5 shadow-sm">Bar El Camino Rte.</span>
+              </div>
+              <div class="text-[#A9824F] text-xs opacity-75 z-10 font-bold">···</div>
+
+              <!-- Estación 5: Siete Aguas -->
+              <div class="relative z-10 flex flex-col items-center text-center">
+                <div class="w-7 h-7 rounded-full bg-[#EAE0CC] border border-[#A9824F]/70 flex items-center justify-center text-[#7A6A50] text-xs">
+                  <span class="material-symbols-outlined text-xs">water_drop</span>
+                </div>
+                <span class="font-body-md text-xs mt-2 text-[#3B2A1A] font-semibold">Siete Aguas</span>
+                <span class="text-[11px] text-[#5C4A38] font-bold">28 km</span>
+              </div>
+              <div class="text-[#A9824F] text-xs opacity-75 z-10 font-bold">···</div>
+
+              <!-- Estación 6: Chiva -->
+              <div class="relative z-10 flex flex-col items-center text-center">
+                <div class="w-7 h-7 rounded-full bg-[#EAE0CC] border border-[#A9824F]/70 flex items-center justify-center text-[#7A6A50] text-xs">
+                  <span class="material-symbols-outlined text-xs">wb_twilight</span>
+                </div>
+                <span class="font-body-md text-xs mt-2 text-[#3B2A1A] font-semibold">Chiva</span>
+                <span class="text-[11px] text-[#5C4A38] font-bold">44 km</span>
+              </div>
+              <div class="text-[#A9824F] text-xs opacity-75 z-10 font-bold">···</div>
+
+              <!-- Estación 7: Valencia -->
+              <div class="relative z-10 flex flex-col items-center text-center group">
+                <div class="w-9 h-9 rounded-full bg-[#EAE0CC] border-2 border-[#A9824F] flex items-center justify-center text-[#7A6A50] shadow-sm group-hover:border-[#7A2020] transition-colors">
+                  <span class="material-symbols-outlined text-sm">castle</span>
+                </div>
+                <span class="font-headline-sm text-xs mt-2 font-bold text-[#3B2A1A]">Valencia</span>
+                <span class="text-[11px] text-[#5C4A38] font-bold">68 km</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECCIÓN : FOGONES, TRADICIÓN Y HOSPITALIDAD (FONDO LIMPIO CON CARDS CON TEXTURA SUTIL) -->
+      <!-- ========================================== -->
+      <section id="fogones" class="w-full bg-[#EAE0CC] px-margin-mobile lg:px-margin py-space-xl border-b border-[#C9B896] scroll-mt-24">
+        <div class="max-w-7xl mx-auto">
+          <!-- Encabezado de Sección estilo Grabado -->
+          <div class="text-center max-w-3xl mx-auto mb-space-xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-[#DDCEAE] border border-[#A9824F]/40 rounded text-[#7A6A50] font-label-md text-xs sm:text-sm uppercase tracking-widest mb-3 font-bold">
+              <span class="material-symbols-outlined text-base text-[#A9824F]">restaurant</span> Casa de Comidas y Parada de Carretera
+            </div>
+            <h2 class="font-headline-lg text-2xl sm:text-3xl md:text-4xl text-[#3B2A1A] uppercase tracking-wide font-bold">
+              Fogones de Leña, Almuerzos y Terruño Requenense
+            </h2>
+            <p class="font-body-lg text-base sm:text-lg text-[#5C4A38] mt-3 leading-relaxed">
+              En Bar El Camino mantenemos viva la lumbre de las tradicionales casas de comidas y mesones de carretera. Un rincón donde detener el viaje, templar el cuerpo con brasas de sarmiento y compartir mesa con la franqueza de siempre.
+            </p>
+          </div>
+
+          <!-- 3 Pilares de la experiencia con sutil textura de papel (12%) -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+            <!-- Pilar 1: Almuerzos de Cuadrilla -->
+            <article class="relative rounded-lg border-2 border-[#A9824F]/50 overflow-hidden shadow-md flex flex-col justify-between group hover:shadow-xl hover:border-[#A9824F] transition-all p-space-lg min-h-[420px]">
+              <!-- Imagen de fondo con escala en hover (patrón cross-selling) -->
+              <img src="almuerzo-cuadrilla.jpg" alt="Almuerzos de cuadrilla en Bar El Camino Requena" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700 pointer-events-none z-0" loading="lazy"/>
+              <!-- Overlay degradado ajustado: más claro arriba (~25%) y oscuro abajo (~75-80%) para resaltar la imagen y asegurar legibilidad -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#100B07]/80 via-[#140D08]/50 to-[#140D08]/25 z-0"></div>
+              
+              <div class="relative z-10">
+                <div class="w-12 h-12 rounded bg-[#3B2A1D]/90 border border-[#A9824F]/60 flex items-center justify-center text-[#DDCEAE] mb-4 shadow-md backdrop-blur-sm">
+                  <span class="material-symbols-outlined text-2xl">breakfast_dining</span>
+                </div>
+                <span class="font-label-sm text-xs text-[#DDCEAE] uppercase tracking-widest font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Desde las 06:00 h</span>
+                <h3 class="font-headline-md text-xl text-[#F4EFE6] uppercase mt-1 mb-2 font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">Almuerzos de Cuadrilla</h3>
+                <p class="font-body-md text-sm sm:text-base text-[#F4EFE6] leading-relaxed drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                  El rito popular de nuestra comarca: pan recién horneado, embutidos tradicionales de Requena, vino de la tierra y tapas de barra para reponer fuerzas antes de seguir el camino.
+                </p>
+              </div>
+              <div class="relative z-10 mt-6 pt-3 border-t border-[#A9824F]/40 flex items-center justify-between text-xs font-label-sm uppercase text-[#DDCEAE] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                <span>Servicio continuado matutino</span>
+                <span class="material-symbols-outlined text-sm text-[#A9824F]">schedule</span>
+              </div>
+            </article>
+
+            <!-- Pilar 2: Brasas de Encina -->
+            <article class="relative rounded-lg border-2 border-[#A9824F]/50 overflow-hidden shadow-md flex flex-col justify-between group hover:shadow-xl hover:border-[#A9824F] transition-all p-space-lg min-h-[420px]">
+              <!-- Imagen de fondo con escala en hover (patrón cross-selling) -->
+              <img src="brasa-tradicion.jpg" alt="Carnes y embutidos a la brasa de encina en Bar El Camino" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700 pointer-events-none z-0" loading="lazy"/>
+              <!-- Overlay degradado ajustado: más claro arriba (~25%) y oscuro abajo (~75-80%) para resaltar la imagen y asegurar legibilidad -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#100B07]/80 via-[#140D08]/50 to-[#140D08]/25 z-0"></div>
+              
+              <div class="relative z-10">
+                <div class="w-12 h-12 rounded bg-[#3B2A1D]/90 border border-[#A9824F]/60 flex items-center justify-center text-[#DDCEAE] mb-4 shadow-md backdrop-blur-sm">
+                  <span class="material-symbols-outlined text-2xl">local_fire_department</span>
+                </div>
+                <span class="font-label-sm text-xs text-[#DDCEAE] uppercase tracking-widest font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Fuego Vivo de Encina</span>
+                <h3 class="font-headline-md text-xl text-[#F4EFE6] uppercase mt-1 mb-2 font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">Brasa &amp; Tradición</h3>
+                <p class="font-body-md text-sm sm:text-base text-[#F4EFE6] leading-relaxed drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                  El carbón de encina otorga a nuestras carnes y embutidos un aroma ahumado incomparable. Asados al momento con el punto jugoso y crujiente que pide la brasa.
+                </p>
+              </div>
+              <div class="relative z-10 mt-6 pt-3 border-t border-[#A9824F]/40 flex items-center justify-between text-xs font-label-sm uppercase text-[#DDCEAE] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                <span>Carbón de encina</span>
+                <span class="material-symbols-outlined text-sm text-[#A9824F]">outdoor_grill</span>
+              </div>
+            </article>
+
+            <!-- Pilar 3: Vinos & Terruño -->
+            <article class="relative rounded-lg border-2 border-[#A9824F]/50 overflow-hidden shadow-md flex flex-col justify-between group hover:shadow-xl hover:border-[#A9824F] transition-all p-space-lg min-h-[420px]">
+              <!-- Imagen de fondo con escala en hover (patrón cross-selling) -->
+              <img src="bodega-cosecha.jpg" alt="Vinos de Bobal y barricas históricas de Requena en Bar El Camino" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700 pointer-events-none z-0" loading="lazy"/>
+              <!-- Overlay degradado ajustado: más claro arriba (~25%) y oscuro abajo (~75-80%) para resaltar la imagen y asegurar legibilidad -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#100B07]/80 via-[#140D08]/50 to-[#140D08]/25 z-0"></div>
+              
+              <div class="relative z-10">
+                <div class="w-12 h-12 rounded bg-[#3B2A1D]/90 border border-[#A9824F]/60 flex items-center justify-center text-[#DDCEAE] mb-4 shadow-md backdrop-blur-sm">
+                  <span class="material-symbols-outlined text-2xl">wine_bar</span>
+                </div>
+                <span class="font-label-sm text-xs text-[#DDCEAE] uppercase tracking-widest font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">D.O. Utiel-Requena</span>
+                <h3 class="font-headline-md text-xl text-[#F4EFE6] uppercase mt-1 mb-2 font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">Bodega &amp; Cosecha</h3>
+                <p class="font-body-md text-sm sm:text-base text-[#F4EFE6] leading-relaxed drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                  Tributo a los cosecheros y bodegas de nuestra tierra. Vinos tintos recios de Bobal y rosados frescos para regar una tertulia pausada y reconfortante.
+                </p>
+              </div>
+              <div class="relative z-10 mt-6 pt-3 border-t border-[#A9824F]/40 flex items-center justify-between text-xs font-label-sm uppercase text-[#DDCEAE] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                <span>Selección comarcal</span>
+                <span class="material-symbols-outlined text-sm text-[#A9824F]">liquor</span>
+              </div>
+            </article>
+          </div>
+
+          <!-- Banner / CTA Carta Completa y Precios -->
+          <div class="mt-8 sm:mt-10 text-center bg-[#F4EFE6] border-2 border-[#A9824F] rounded-lg p-5 sm:p-8 shadow-lg max-w-2xl mx-auto">
+            <div class="inline-flex items-center gap-1.5 text-[#7A2020] text-xs uppercase tracking-widest font-bold font-headline-sm mb-1.5">
+              <span class="material-symbols-outlined text-base">restaurant_menu</span> Selección Tradicional &amp; Brasas
+            </div>
+            <h3 class="font-headline-md text-xl sm:text-2xl text-[#3B2A1A] font-bold uppercase mb-2">
+              Consulta Nuestra Carta Completa y Precios
+            </h3>
+            <p class="font-body-md text-sm sm:text-base text-[#5C4A38] mb-5 max-w-lg mx-auto leading-relaxed">
+              Desayunos, tostadas, bocadillos de autor y tradicionales, tapas al centro, carnes a la brasa con guarnición y combos especiales para compartir.
+            </p>
+            <button type="button" onclick="openMenuModal()" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#7A2020] hover:bg-[#631818] active:scale-95 text-white font-headline-sm text-xs sm:text-sm uppercase tracking-wider font-bold rounded shadow-md border border-[#A9824F]/60 transition-all cursor-pointer">
+              <span class="material-symbols-outlined text-lg text-[#DDCEAE]">menu_book</span>
+              Ver Carta Completa y Precios
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECCIÓN "INFORMACIÓN Y RESERVAS" -->
+      <!-- ========================================== -->
+      <section class="w-full bg-[#DDCEAE] py-space-xl px-margin-mobile lg:px-margin border-b border-[#C9B896] scroll-mt-24" id="reservas">
+        <div id="contacto" class="-top-24 relative"></div>
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center max-w-2xl mx-auto mb-space-xl">
+            <span class="font-label-md text-xs sm:text-sm uppercase tracking-widest text-[#7A6A50] flex items-center justify-center gap-2 font-bold">
+              <span class="material-symbols-outlined text-base text-[#2D6A4F]">chat</span> Parada &amp; Asiento en el Mesón
+            </span>
+            <h2 class="font-headline-lg text-2xl sm:text-3xl text-[#3B2A1A] uppercase mt-1 font-bold">Contacto y Reservas WhatsApp</h2>
+            <p class="font-body-md text-sm sm:text-base text-[#3B2A1A]/85 mt-2 leading-relaxed">
+              Para asegurar su mesa, almuerzos de cuadrilla o cualquier consulta en ruta, contáctenos directamente por WhatsApp o por teléfono oficial. Confirmación ágil y al instante.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg items-stretch">
+            <!-- Columna Izquierda: Contacto Inmediato WhatsApp / Teléfono & Horarios Oficiales -->
+            <div class="flex flex-col gap-space-md justify-between">
+              <!-- Tarjeta Principal: Reservas por WhatsApp y Teléfono -->
+              <div class="card-paper-subtle bg-[#EAE0CC] p-6 sm:p-8 rounded-lg border-2 border-[#A9824F]/50 shadow-md flex flex-col justify-between gap-4">
+                <div class="relative z-10 flex flex-col gap-3">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-label-sm uppercase text-[#7A6A50] tracking-widest font-bold">Atención Directa</span>
+                    <span class="inline-flex items-center gap-1.5 font-label-sm text-[11px] uppercase tracking-wider bg-[#2D6A4F] text-white px-2.5 py-1 rounded-full font-bold shadow-sm">
+                      <span class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span> Respuesta Rápida
+                    </span>
+                  </div>
+                  <h3 class="font-headline-lg text-xl sm:text-2xl text-[#3B2A1A] uppercase font-bold flex items-center gap-2.5">
+                    <span class="material-symbols-outlined text-[#2D6A4F] text-2xl sm:text-3xl">chat</span> Reservas por WhatsApp
+                  </h3>
+                  <p class="font-body-sm text-sm text-[#3B2A1A]/85 leading-relaxed">
+                    Escríbanos directamente por WhatsApp indicando el día, la hora estimada y el número de comensales. Le responderemos y confirmaremos su mesa de inmediato.
+                  </p>
+                  
+                  <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                    <a class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-[#2D6A4F] text-white rounded font-headline-sm text-xs sm:text-sm uppercase tracking-wider hover:bg-[#1E4A37] transition-all shadow-md border border-[#2D6A4F]/60 font-bold active:scale-[0.98]" href="https://wa.me/34666056955?text=Hola,%20quisiera%20reservar%20una%20mesa%20en%20Bar%20El%20Camino%20Rte." rel="noopener" target="_blank">
+                      <span class="material-symbols-outlined text-xl">chat</span>
+                      WhatsApp: Reservar
+                    </a>
+                    <a class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-[#7A2020] text-white rounded font-headline-sm text-xs sm:text-sm uppercase tracking-wider hover:bg-[#631818] transition-all shadow-md border border-[#A9824F]/40 font-bold active:scale-[0.98]" href="tel:+34666056955">
+                      <span class="material-symbols-outlined text-xl">call</span>
+                      Llamar: 666 05 69 55
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Horarios oficiales -->
+              <div class="card-paper-subtle bg-[#EAE0CC] p-6 sm:p-7 rounded-lg border border-[#A9824F]/40 shadow-sm">
+                <div class="relative z-10">
+                  <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-headline-sm text-base sm:text-lg text-[#3B2A1A] uppercase flex items-center gap-2 font-bold">
+                      <span class="material-symbols-outlined text-[#A9824F]">schedule</span> Horario Oficial
+                    </h3>
+                    <span class="font-label-sm text-[11px] uppercase tracking-wider bg-[#2D6A4F] text-white px-2.5 py-0.5 rounded font-bold">Abierto Todos los Días</span>
+                  </div>
+                  <div class="space-y-2.5 font-body-sm text-xs sm:text-sm text-[#5C4A38]">
+                    <div class="flex justify-between border-b border-[#C9B896]/60 pb-2">
+                      <span class="font-semibold text-[#3B2A1A]">Lunes a Domingo:</span>
+                      <span class="text-[#3B2A1A] font-bold">06:00 – 16:00 h</span>
+                    </div>
+                    <div class="flex justify-between pt-1 text-[#7A6A50] text-xs">
+                      <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-[#A9824F]">restaurant</span> Desayunos, Almuerzos y Comidas:</span>
+                      <span class="font-semibold text-[#3B2A1A]">Brasas desde primera hora</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Columna Derecha: Enclave Geográfico & Mapa interactivo -->
+            <div class="flex flex-col">
+              <div class="card-paper-subtle bg-[#EAE0CC] p-6 sm:p-8 rounded-lg border border-[#A9824F]/40 shadow-sm flex flex-col h-full">
+                <div class="relative z-10 flex flex-col h-full">
+                  <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-headline-sm text-base sm:text-lg text-[#3B2A1A] uppercase flex items-center gap-2 font-bold">
+                      <span class="material-symbols-outlined text-[#A9824F]">pin_drop</span> Enclave y Dirección
+                    </h3>
+                    <a href="https://maps.app.goo.gl/5Fzs9HDNN4gnpoDg9" target="_blank" rel="noopener" class="text-xs font-label-sm uppercase text-[#7A2020] hover:text-[#A9824F] font-bold flex items-center gap-1 transition-colors">
+                      <span class="material-symbols-outlined text-sm">open_in_new</span> Abrir en Maps
+                    </a>
+                  </div>
+                  <p class="font-body-sm text-sm text-[#3B2A1A] font-semibold">
+                    Travesía San Blás, 2, 46340 Requena, Valencia
+                  </p>
+                  <p class="font-body-sm text-xs text-[#5C4A38] mt-1 mb-3">
+                    Parada céntrica de fácil acceso con zonas de aparcamiento en las inmediaciones.
+                  </p>
+                  <div class="w-full flex-1 min-h-[300px] sm:min-h-[360px] rounded border border-[#A9824F]/40 overflow-hidden shadow-inner">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.016335198424!2d-1.097548!3d39.4836977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd60cfcffc303bcf%3A0x8747044782058656!2sRestaurante%20El%20Camino!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses"
+                      width="100%"
+                      height="100%"
+                      style="border:0;"
+                      allowfullscreen=""
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"
+                      title="Mapa interactivo de Restaurante El Camino en Google Maps">
+                    </iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECCIÓN "NUESTROS ESPACIOS" (TEXTURA DE PAPEL DESTACADA Y FIJA) -->
+      <!-- ========================================== -->
+      <section class="w-full section-paper-prominent px-margin-mobile lg:px-margin py-space-xl border-b border-[#C9B896] scroll-mt-24" id="espacios">
+        <div class="relative max-w-7xl mx-auto z-10">
+          <div class="text-center max-w-2xl mx-auto mb-space-xl">
+            <span class="font-label-md text-xs sm:text-sm uppercase tracking-widest text-[#7A6A50] flex items-center justify-center gap-2 font-bold">
+              <span class="material-symbols-outlined text-base text-[#A9824F]">hub</span> Grupo Gastronómico Requenense
+            </span>
+            <h2 class="font-headline-lg text-2xl sm:text-3xl text-[#3B2A1A] uppercase mt-1 font-bold">El Viaje Continúa · Otros Rincones de Nuestro Grupo</h2>
+            <p class="font-body-md text-sm sm:text-base text-[#5C4A38] mt-2 leading-relaxed">
+              Dos almas distintas con la misma pasión por la hospitalidad y el buen comer en Requena. Descubra nuestras otras propuestas culinarias.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-xl">
+            <!-- Tarjeta 1: POP'S -->
+            <article class="bg-[#DDCEAE] rounded-lg border-2 border-[#A9824F]/40 overflow-hidden shadow-md flex flex-col justify-between group hover:shadow-xl transition-shadow">
+              <div>
+                <a href="https://barpops.netlify.app/" target="_blank" rel="noopener" class="relative block w-full h-64 overflow-hidden bg-[#EAE0CC]">
+                  <img class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Hamburguesa smash artesanal en Pop's Requena" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARIFn6yRxO4_RFGs9MFtNbVzLd7PL0O0HqXTHVK_K4i-ZPUyPxZGi5nl3AA8IXYtce99-vcmi2lUh2f5qB0Fyo1BDXUOJHbMe168bDX4UB_Srg245peGtM5tUzZr7_yvIGpvVQFrmbWHJm-C4GZLP1iBT_dUotlUTlyvg47uVFiTOTCwIqF2yIV6vnbLMuD8qXqWUBxkVjxidFSW2UXewlh_SmwAmFzj1nRvlffav0TKO_7BV3q1LYGQ"/>
+                  <div class="absolute top-4 left-4 bg-[#3B2A1D] text-[#EAE0CC] font-label-sm text-xs uppercase px-3 py-1 rounded shadow border border-[#A9824F]/40 font-semibold">
+                    Moderno &amp; Casual
+                  </div>
+                </a>
+                <div class="p-space-lg">
+                  <div class="flex items-center gap-2 text-[#7A6A50] font-label-md text-xs sm:text-sm uppercase tracking-wider mb-1 font-semibold">
+                    <span class="material-symbols-outlined text-base text-[#A9824F]">sports_bar</span> Cerveza • Tapas Urbanas • Hamburguesas
+                  </div>
+                  <h3 class="font-headline-lg text-xl sm:text-2xl text-[#3B2A1A] uppercase font-bold">
+                    <a href="https://barpops.netlify.app/" target="_blank" rel="noopener" class="hover:text-[#7A2020] transition-colors">
+                      Pop's · Cerveza, Tapas y Hamburguesas
+                    </a>
+                  </h3>
+                  <p class="font-body-md text-sm sm:text-base text-[#3B2A1A]/85 mt-2 leading-relaxed">
+                    El lado más fresco y contemporáneo en el corazón de Requena. Deliciosas smash burgers artesanas de vaca madurada, patatas sazonadas caseras y una selecta variedad de grifos de cerveza para disfrutar con amigos.
+                  </p>
+                </div>
+              </div>
+              <div class="px-space-lg pb-space-lg pt-0">
+                <a class="inline-flex items-center gap-2 font-headline-sm text-xs sm:text-sm uppercase tracking-wider text-[#7A2020] hover:text-[#631818] font-bold border-b border-[#7A2020] pb-0.5 group-hover:translate-x-1 transition-transform" href="https://barpops.netlify.app/" target="_blank" rel="noopener">
+                  Descubrir Pop's en Requena <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- Tarjeta 2: GARDEN BY VALENTINA -->
+            <article class="bg-[#DDCEAE] rounded-lg border-2 border-[#A9824F]/40 overflow-hidden shadow-md flex flex-col justify-between group hover:shadow-xl transition-shadow">
+              <div>
+                <a href="https://gardenbyvalentina.netlify.app/" target="_blank" rel="noopener" class="relative block w-full h-64 overflow-hidden bg-[#EAE0CC]">
+                  <img class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Terraza botánica en Garden by Valentina Requena" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC17aEKO_Z0Rm8rorCSsWcUAuht-wXWiEMCF171XDnv8GFPz-aEzvFpwb-06JUqb683wIwcbt3LsrLwccjzDKSlsTgKjqFRWrAIbAU-yjcSkOh6N6OiAqqP1f2BXAaJMHHzOMyea7iMioR27gn_Vmi-e7g-DaUa1VBdomNO9N8_z8Ia9DHhj4swRpzRiFtSjlQgGVKs6isJiiNmFXVtjJkQyEmGZEnYvIYho5kz1KMB2bRaXQtufT4HHg"/>
+                  <div class="absolute top-4 left-4 bg-[#7A2020] text-white font-label-sm text-xs uppercase px-3 py-1 rounded shadow border border-[#A9824F]/40 font-semibold">
+                    Oasis Botánico &amp; Coctelería
+                  </div>
+                </a>
+                <div class="p-space-lg">
+                  <div class="flex items-center gap-2 text-[#7A6A50] font-label-md text-xs sm:text-sm uppercase tracking-wider mb-1 font-semibold">
+                    <span class="material-symbols-outlined text-base text-[#A9824F]">local_florist</span> Cenas bajo las Estrellas • Cócteles • Música
+                  </div>
+                  <h3 class="font-headline-lg text-xl sm:text-2xl text-[#3B2A1A] uppercase font-bold">
+                    <a href="https://gardenbyvalentina.netlify.app/" target="_blank" rel="noopener" class="hover:text-[#7A2020] transition-colors">
+                      Garden by Valentina
+                    </a>
+                  </h3>
+                  <p class="font-body-md text-sm sm:text-base text-[#3B2A1A]/85 mt-2 leading-relaxed">
+                    Un edén al aire libre rodeado de vegetación y encanto rústico. Ideal para veladas íntimas, cócteles de autor, eventos privados y gastronomía mediterránea bajo el cielo estrellado de Requena.
+                  </p>
+                </div>
+              </div>
+              <div class="px-space-lg pb-space-lg pt-0">
+                <a class="inline-flex items-center gap-2 font-headline-sm text-xs sm:text-sm uppercase tracking-wider text-[#7A2020] hover:text-[#631818] font-bold border-b border-[#7A2020] pb-0.5 group-hover:translate-x-1 transition-transform" href="https://gardenbyvalentina.netlify.app/" target="_blank" rel="noopener">
+                  Visitar Garden by Valentina <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- PIE DE PÁGINA (FOOTER CON CAPA DE TEXTURA FIJA) -->
+  <!-- ========================================== -->
+  <footer class="w-full footer-paper-bg text-[#EAE0CC] border-t border-[#A9824F]/40 relative">
+    <div class="relative max-w-7xl mx-auto px-margin-mobile lg:px-margin pt-space-xl pb-space-lg z-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-space-xl pb-space-xl border-b border-[#A9824F]/25">
+        
+        <!-- Columna 1: Marca e Historia -->
+        <div class="flex flex-col gap-space-sm">
+          <div class="flex items-center gap-space-sm text-[#F4EFE6]">
+            <span class="material-symbols-outlined text-3xl text-[#A9824F]">local_fire_department</span>
+            <span class="font-headline-sm text-lg uppercase tracking-wider font-bold text-[#F4EFE6]">EL CAMINO</span>
+          </div>
+          <p class="font-body-md text-sm text-[#C9B896] leading-relaxed">
+            Casa de comidas y parada gastronómica en la antigua vía de Castilla a Valencia. Brasas de sarmiento, almuerzos de cuadrilla y vinos de la comarca Utiel-Requena.
+          </p>
+          <div class="inline-flex items-center gap-space-sm px-space-sm py-1 bg-[#4A3626] border border-[#A9824F]/40 w-fit rounded">
+            <span class="material-symbols-outlined text-[#A9824F] text-sm">verified</span>
+            <span class="font-label-sm text-xs uppercase tracking-wider text-[#DDCEAE] font-bold">Ruta del Vino y Camino Histórico</span>
+          </div>
+        </div>
+
+        <!-- Columna 2: Ubicación & Contacto -->
+        <div class="flex flex-col gap-space-sm">
+          <h3 class="font-headline-sm text-base text-[#F4EFE6] uppercase font-bold">Dirección &amp; Contacto</h3>
+          <p class="font-body-md text-sm text-[#C9B896] leading-relaxed">
+            Travesía San Blás, 2<br/>
+            46340 Requena (Valencia)
+          </p>
+          <div class="flex items-center gap-space-xs text-[#DDCEAE]">
+            <span class="material-symbols-outlined text-base text-[#A9824F]">call</span>
+            <span class="font-body-md text-sm">+34 666 05 69 55</span>
+          </div>
+        </div>
+
+        <!-- Columna 3: Horas de Servicio -->
+        <div class="flex flex-col gap-space-sm">
+          <h3 class="font-headline-sm text-base text-[#F4EFE6] uppercase font-bold">Horario Oficial</h3>
+          <ul class="space-y-1.5 font-body-md text-sm text-[#C9B896]">
+            <li class="flex justify-between border-b border-[#4A3626] pb-1">
+              <span>Lunes a Domingo:</span>
+              <span class="font-semibold text-[#F4EFE6]">06:00 – 16:00 h</span>
+            </li>
+            <li class="flex justify-between border-b border-[#4A3626] py-1 text-xs text-[#DDCEAE]">
+              <span>Horario continuado:</span>
+              <span>Todos los días</span>
+            </li>
+            <li class="flex justify-between border-b border-[#4A3626] py-1 text-xs text-[#DDCEAE]">
+              <span>Apertura de mañana:</span>
+              <span>Desde las 06:00 h</span>
+            </li>
+            <li class="flex justify-between pt-1 text-xs text-[#DDCEAE]">
+              <span>Cierre del servicio:</span>
+              <span class="text-[#EAE0CC] font-semibold">16:00 h</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="pt-space-md flex flex-col md:flex-row justify-between items-center gap-space-sm text-[#C9B896] font-body-sm text-xs sm:text-sm">
+        <p>© 2025 BAR · EL CAMINO · RTE — Mesón Tradicional de Carretera en Requena. Todos los derechos reservados.</p>
+        <div class="flex gap-space-md font-label-sm uppercase tracking-wider text-xs">
+          <a class="hover:text-[#F4EFE6] text-[#C9B896] transition-colors" href="#">Aviso Legal</a>
+          <a class="hover:text-[#F4EFE6] text-[#C9B896] transition-colors" href="#">Privacidad</a>
+          <a class="hover:text-[#F4EFE6] text-[#C9B896] transition-colors" href="#">Registro de Huéspedes</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- MODAL DE LA CARTA (VENTANA EMERGENTE LIGHTBOX) -->
+  <!-- ========================================== -->
+  <div id="menu-modal" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 transition-all duration-300 opacity-0 pointer-events-none" role="dialog" aria-modal="true" aria-labelledby="menu-modal-title" onclick="handleModalBackdropClick(event)">
+    <!-- Fondo oscuro con desenfoque / Backdrop -->
+    <div id="menu-modal-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"></div>
+
+    <!-- Contenedor del Modal -->
+    <div id="menu-modal-dialog" class="relative z-10 w-full max-w-4xl h-[94vh] sm:h-[90vh] bg-[#EAE0CC] rounded-2xl shadow-2xl border-2 border-[#A9824F] flex flex-col overflow-hidden transform scale-95 transition-all duration-300" onclick="event.stopPropagation()">
+      
+      <!-- Cabecera Minimalista del Modal -->
+      <div class="flex items-center justify-between px-3.5 sm:px-5 py-2 sm:py-2.5 bg-[#3B2A1D] text-[#F4EFE6] border-b border-[#A9824F]/60 shrink-0 select-none">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#DDCEAE] text-lg sm:text-xl">menu_book</span>
+          <span class="font-headline-sm font-bold text-xs sm:text-sm uppercase tracking-wider text-[#F4EFE6]">
+            Carta y Menú
+          </span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- Botón Compartir Carta (a la izquierda de Cerrar) -->
+          <button type="button" onclick="shareMenuModal()" class="p-1.5 sm:px-2.5 sm:py-1 rounded bg-[#4A3626] hover:bg-[#5C4533] border border-[#A9824F]/60 text-[#DDCEAE] hover:text-white flex items-center gap-1 text-xs uppercase tracking-wider font-semibold active:scale-95 transition-all cursor-pointer shadow-sm" title="Compartir carta con acompañantes" aria-label="Compartir menú">
+            <span class="material-symbols-outlined text-base">share</span>
+            <span class="hidden sm:inline">Compartir</span>
+          </button>
+
+          <!-- Botón Cerrar Carta -->
+          <button type="button" onclick="closeMenuModal()" class="flex items-center gap-1 px-2.5 sm:px-3 py-1 bg-[#7A2020] hover:bg-[#631818] active:scale-95 text-white text-xs font-bold uppercase tracking-wider rounded border border-[#A9824F]/60 shadow-sm transition-all cursor-pointer" aria-label="Cerrar carta">
+            <span class="material-symbols-outlined text-base">close</span>
+            <span>Cerrar</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Contenido: Iframe cargando carta.html -->
+      <div class="relative flex-1 w-full h-full bg-[#EAE0CC] overflow-hidden">
+        <!-- Indicador de carga ligero mientras carga el iframe -->
+        <div id="menu-iframe-loader" class="absolute inset-0 flex items-center justify-center bg-[#EAE0CC] z-0 text-[#7A6A50]">
+          <div class="flex flex-col items-center gap-2">
+            <span class="material-symbols-outlined text-3xl animate-spin text-[#7A2020]">progress_activity</span>
+            <span class="font-headline-sm text-xs uppercase tracking-wider">Cargando carta...</span>
+          </div>
+        </div>
+        <iframe id="menu-iframe" src="about:blank" data-src="carta.html?modal=1" title="Carta completa de Bar El Camino" class="relative z-10 w-full h-full border-0 bg-transparent" allowtransparency="true"></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast flotante de confirmación (Compartir enlace de la carta) -->
+  <div id="menu-modal-toast" class="fixed top-6 left-1/2 -translate-x-1/2 z-[70] bg-[#3B2A1D] text-[#F4EFE6] border-2 border-[#A9824F] px-4 py-2 rounded-full shadow-2xl text-xs sm:text-sm font-semibold uppercase tracking-wider transition-all duration-300 opacity-0 pointer-events-none -translate-y-2 flex items-center gap-2">
+    <span class="material-symbols-outlined text-base text-[#DDCEAE]">check_circle</span>
+    <span id="menu-modal-toast-text">Enlace de la carta copiado</span>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- BARRA DE ACCIÓN FLOTANTE INFERIOR (MÓVIL) -->
+  <!-- ========================================== -->
+  <nav class="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-[#3B2A1D]/95 backdrop-blur-md border-t-2 border-[#A9824F]/50 shadow-[0_-4px_20px_rgba(0,0,0,0.35)] px-3 py-1.5 pb-safe" aria-label="Acciones rápidas del mesón">
+    <div class="grid grid-cols-4 gap-1.5 max-w-md mx-auto items-center">
+      <!-- 1. Llamada Inmediata -->
+      <a href="tel:+34666056955" class="flex flex-col items-center justify-center py-1.5 px-1 rounded hover:bg-[#4A3626] text-[#EAE0CC] transition-colors active:scale-95" aria-label="Llamar por teléfono">
+        <span class="material-symbols-outlined text-xl text-[#DDCEAE]">call</span>
+        <span class="font-label-sm text-[10px] uppercase font-bold tracking-wider mt-0.5">Llamar</span>
+      </a>
+      <!-- 2. Cómo Llegar / GPS -->
+      <a href="https://maps.app.goo.gl/5Fzs9HDNN4gnpoDg9" target="_blank" rel="noopener" class="flex flex-col items-center justify-center py-1.5 px-1 rounded hover:bg-[#4A3626] text-[#EAE0CC] transition-colors active:scale-95" aria-label="Cómo llegar en Google Maps">
+        <span class="material-symbols-outlined text-xl text-[#A9824F]">navigation</span>
+        <span class="font-label-sm text-[10px] uppercase font-bold tracking-wider mt-0.5">Llegar</span>
+      </a>
+      <!-- 3. Carta y Menú (Abre modal) -->
+      <button type="button" onclick="openMenuModal()" class="flex flex-col items-center justify-center py-1.5 px-1 rounded hover:bg-[#4A3626] text-[#F4EFE6] transition-colors active:scale-95 bg-[#7A2020]/60 border border-[#A9824F]/40 cursor-pointer" aria-label="Ver carta completa">
+        <span class="material-symbols-outlined text-xl text-[#DDCEAE]">restaurant_menu</span>
+        <span class="font-label-sm text-[10px] uppercase font-bold tracking-wider mt-0.5">Carta</span>
+      </button>
+      <!-- 4. Reservas por WhatsApp (Botón destacado) -->
+      <a href="https://wa.me/34666056955?text=Hola,%20quisiera%20reservar%20una%20mesa%20en%20Bar%20El%20Camino%20Rte." target="_blank" rel="noopener" class="flex flex-col items-center justify-center py-1.5 px-2 bg-[#2D6A4F] text-white rounded shadow-md border border-[#2D6A4F]/60 hover:bg-[#1E4A37] transition-all active:scale-95 font-semibold" aria-label="Reservar por WhatsApp">
+        <span class="material-symbols-outlined text-xl text-white">chat</span>
+        <span class="font-headline-sm text-[10px] uppercase font-bold tracking-wider mt-0.5">WhatsApp</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Scripts interactivos -->
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('menu-icon');
+      if (!menu || !icon) return;
+      const isHidden = menu.classList.contains('hidden');
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        icon.textContent = 'close';
+      } else {
+        menu.classList.add('hidden');
+        icon.textContent = 'menu';
+      }
+    }
+
+    // Centrar automáticamente en Requena en pantallas móviles al entrar
+    function centerRequenaOnMobile(smooth = false) {
+      const container = document.getElementById('itinerary-scroll');
+      const requena = document.getElementById('station-requena');
+      if (!container || !requena) return;
+
+      if (container.scrollWidth > container.clientWidth) {
+        const requenaCenter = requena.offsetLeft + (requena.offsetWidth / 2);
+        const targetScroll = requenaCenter - (container.clientWidth / 2);
+        if (smooth) {
+          container.scrollTo({ left: Math.max(0, targetScroll), behavior: 'smooth' });
+        } else {
+          container.scrollLeft = Math.max(0, targetScroll);
+        }
+      }
+    }
+
+    // Inicializar centrado inmediato, en DOMContentLoaded, load y cambios de tamaño
+    centerRequenaOnMobile(false);
+    document.addEventListener('DOMContentLoaded', () => centerRequenaOnMobile(false));
+    window.addEventListener('load', () => centerRequenaOnMobile(false));
+    window.addEventListener('orientationchange', () => setTimeout(() => centerRequenaOnMobile(true), 150));
+    window.addEventListener('resize', () => {
+      if (window.innerWidth < 1024) {
+        centerRequenaOnMobile(false);
+      }
+    });
+
+    // Soporte para arrastre con ratón (drag to scroll) además del swipe táctil nativo
+    (function initItineraryDrag() {
+      const container = document.getElementById('itinerary-scroll');
+      if (!container) return;
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      container.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+      });
+      window.addEventListener('mouseup', () => { isDown = false; });
+      container.addEventListener('mouseleave', () => { isDown = false; });
+      container.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 1.4;
+        container.scrollLeft = scrollLeft - walk;
+      });
+    })();
+
+    // ==========================================
+    // MODAL DE CARTA Y MENÚ (LIGHTBOX POPUP)
+    // ==========================================
+    function openMenuModal() {
+      const modal = document.getElementById('menu-modal');
+      const dialog = document.getElementById('menu-modal-dialog');
+      const iframe = document.getElementById('menu-iframe');
+      const loader = document.getElementById('menu-iframe-loader');
+      if (!modal) return;
+
+      if (iframe && (!iframe.src || iframe.src === 'about:blank' || iframe.getAttribute('src') === 'about:blank')) {
+        iframe.src = iframe.getAttribute('data-src') || 'carta.html?modal=1';
+        iframe.onload = function() {
+          if (loader) loader.style.display = 'none';
+        };
+      }
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100', 'pointer-events-auto');
+      if (dialog) {
+        dialog.classList.remove('scale-95');
+        dialog.classList.add('scale-100');
+      }
+      document.body.classList.add('overflow-hidden');
+
+      try {
+        if (window.location.hash !== '#carta') {
+          window.history.pushState({ menuModal: true }, '', '#carta');
+        }
+      } catch (e) {}
+    }
+
+    function closeMenuModal(fromPopState = false) {
+      const modal = document.getElementById('menu-modal');
+      const dialog = document.getElementById('menu-modal-dialog');
+      if (!modal || modal.classList.contains('pointer-events-none')) return;
+
+      modal.classList.remove('opacity-100', 'pointer-events-auto');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      if (dialog) {
+        dialog.classList.remove('scale-100');
+        dialog.classList.add('scale-95');
+      }
+      document.body.classList.remove('overflow-hidden');
+
+      if (!fromPopState && window.location.hash === '#carta') {
+        try {
+          window.history.back();
+        } catch (e) {}
+      }
+    }
+
+    function handleModalBackdropClick(e) {
+      if (e.target.id === 'menu-modal' || e.target.id === 'menu-modal-backdrop') {
+        closeMenuModal();
+      }
+    }
+
+    // Cerrar con Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeMenuModal();
+      }
+    });
+
+    // Cerrar cuando se recibe mensaje desde el iframe
+    window.addEventListener('message', function(e) {
+      if (e.data === 'close-menu-modal') {
+        closeMenuModal();
+      }
+    });
+
+    // Cerrar al pulsar botón Atrás en Android o navegador móvil
+    window.addEventListener('popstate', function() {
+      closeMenuModal(true);
+    });
+
+    // Compartir la carta del restaurante (Web Share API o copiar enlace)
+    function shareMenuModal() {
+      const shareUrl = window.location.origin + '/carta.html';
+      const shareData = {
+        title: 'Carta y Menú - Bar El Camino (Requena)',
+        text: 'Consulta la carta completa de Bar El Camino en Requena: bocadillos, tapas, carnes a la brasa y vinos tradicionales.',
+        url: shareUrl
+      };
+
+      if (navigator.share) {
+        navigator.share(shareData).catch(() => {});
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          showMenuToast('Enlace de la carta copiado al portapapeles');
+        }).catch(() => {
+          prompt('Copia el enlace de la carta:', shareUrl);
+        });
+      } else {
+        prompt('Copia el enlace de la carta:', shareUrl);
+      }
+    }
+
+    function showMenuToast(msg) {
+      const toast = document.getElementById('menu-modal-toast');
+      const text = document.getElementById('menu-modal-toast-text');
+      if (!toast) return;
+      if (text) text.textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-2');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2');
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
